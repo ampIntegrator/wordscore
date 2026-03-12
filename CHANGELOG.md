@@ -5,6 +5,49 @@ All notable changes to Wordscore will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2026-03-13
+
+### Fixed
+
+- **ACF Font System:** Correction de la logique conditionnelle des champs Google Fonts personnalisés
+  - Les champs "Nom de la police personnalisée" n'apparaissent maintenant **que** si "Police personnalisée" est sélectionnée
+  - Ajout de la condition `field_heading_font == "custom"` pour le champ heading
+  - Ajout de la condition `field_body_font == "custom"` pour le champ body
+  - Suppression définitive des champs dupliqués `field_heading_custom_font_weight` et `field_body_custom_font_weight`
+
+- **ACF Font Weights:** Simplification du système de graisses de police
+  - Un seul champ font-weight pour headings (utilisé pour Google Fonts ET polices custom)
+  - Un seul champ font-weight pour body (utilisé pour Google Fonts ET polices custom)
+  - Body font-weight: ajout de l'option "Light (300)" et suppression de "Bold (700)"
+  - Choix disponibles pour body: 300, 400, 500, 600
+
+- **Icônes de recherche:** Centralisation complète du système d'icônes
+  - Toutes les icônes de recherche utilisent maintenant `header_get_search_icon()`
+  - Création de templates surchargés pour remplacer les icônes Font Awesome hardcodées:
+    - `searchform.php` (formulaire de recherche classique)
+    - `woocommerce/product-searchform.php` (recherche produits WooCommerce)
+    - `inc/blocks/block-widget-search.php` (widget de recherche Gutenberg)
+    - `template-parts/header/actions.php` (toggle de recherche dans le header)
+    - `template-parts/header/actions-woocommerce.php` (toggle WooCommerce)
+
+- **Offcanvas Search:** Amélioration du bouton de fermeture
+  - Remplacement du bouton Bootstrap standard par `<i class="bi bi-x-lg"></i>`
+  - Gestion dynamique de la couleur selon `text-dark` ou `text-light` (défini dans Header options)
+  - Styles ajoutés dans `assets/scss/components/_offcanvas.scss`
+
+### Added
+
+- **Fichier d'import ACF:** `group_global_options.json` à la racine du thème
+  - Version propre sans champs dupliqués
+  - Logique conditionnelle corrigée
+  - Prêt pour import via Custom Fields > Tools > Import Field Groups
+
+### Technical
+
+- Injection SCSS correctement configurée via `bootscore/scss/compiler` filter
+- Injection CSS variables Bootstrap pour `--bs-body-font-size`, `--bs-body-font-weight`
+- Classe `.text-light` fixée à `#fff` en statique (comme demandé)
+
 ## [1.1.0] - 2026-03-12
 
 ### Changed - Refonte complète du système de couleurs
@@ -13,18 +56,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Les classes `.btn-primary` et `.btn-secondary` utilisent maintenant `theme1` et `theme2`
 - Les classes `.bg-theme1` à `.bg-theme6` sont générées dynamiquement via PHP
 - Suppression des couleurs hardcodées dans `_bootscore-variables.scss`
+- **TOUS les composants Bootstrap (alertes, badges, borders, etc.) suivent maintenant les couleurs ACF**
 
 ### Added
 
-- **Nouvelle fonction centralisée:** `wordscore_get_theme_colors()` dans `inc/cache-helpers.php`
-  - Récupère les 6 couleurs thématiques + ink en une seule fois
-  - Cache statique + performance optimale
-  - Élimine la duplication de code
+- **Nouvelles fonctions centralisées dans `inc/cache-helpers.php`:**
+  - `wordscore_get_theme_colors()` - Récupère les 6 couleurs + ink en une fois
+  - `wordscore_hex_to_rgb()` - Convertit hex en RGB pour Bootstrap
+  - `wordscore_darken_color()` - Assombrit une couleur (pour text-emphasis)
+  - `wordscore_lighten_color()` - Éclaircit une couleur (pour subtle variants)
 
-- **Mapping Bootstrap → Thème:**
-  - `--bs-primary` → `--colorTheme1` (theme1)
-  - `--bs-secondary` → `--colorTheme2` (theme2)
-  - Les boutons Bootstrap suivent automatiquement les couleurs ACF
+- **Mapping Bootstrap → Thème COMPLET:**
+  - `--bs-primary` → theme1
+  - `--bs-primary-rgb` → calculé automatiquement
+  - `--bs-primary-text-emphasis` → theme1 assombri de 60%
+  - `--bs-primary-bg-subtle` → theme1 éclairci de 80%
+  - `--bs-primary-border-subtle` → theme1 éclairci de 60%
+  - Idem pour `--bs-secondary` (theme2)
 
 - **Injection des classes dans l'admin:**
   - Nouvelle fonction `bootscore_child_inject_admin_colors()`

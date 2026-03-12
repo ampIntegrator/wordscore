@@ -96,3 +96,73 @@ function wordscore_get_theme_colors() {
 
     return $colors;
 }
+
+/**
+ * Convertit une couleur hex en RGB
+ *
+ * @param string $hex Couleur au format #RRGGBB
+ * @return string RGB au format "r, g, b"
+ */
+function wordscore_hex_to_rgb($hex) {
+    $hex = str_replace('#', '', $hex);
+
+    if (strlen($hex) === 3) {
+        $hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
+    }
+
+    $r = hexdec(substr($hex, 0, 2));
+    $g = hexdec(substr($hex, 2, 2));
+    $b = hexdec(substr($hex, 4, 2));
+
+    return "$r, $g, $b";
+}
+
+/**
+ * Assombrit une couleur hex d'un pourcentage
+ *
+ * @param string $hex Couleur au format #RRGGBB
+ * @param int $percent Pourcentage d'assombrissement (0-100)
+ * @return string Couleur assombrie au format #RRGGBB
+ */
+function wordscore_darken_color($hex, $percent) {
+    $hex = str_replace('#', '', $hex);
+
+    if (strlen($hex) === 3) {
+        $hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
+    }
+
+    $r = hexdec(substr($hex, 0, 2));
+    $g = hexdec(substr($hex, 2, 2));
+    $b = hexdec(substr($hex, 4, 2));
+
+    $r = max(0, min(255, $r - ($r * $percent / 100)));
+    $g = max(0, min(255, $g - ($g * $percent / 100)));
+    $b = max(0, min(255, $b - ($b * $percent / 100)));
+
+    return sprintf("#%02x%02x%02x", $r, $g, $b);
+}
+
+/**
+ * Éclaircit une couleur hex d'un pourcentage
+ *
+ * @param string $hex Couleur au format #RRGGBB
+ * @param int $percent Pourcentage d'éclaircissement (0-100)
+ * @return string Couleur éclaircie au format #RRGGBB
+ */
+function wordscore_lighten_color($hex, $percent) {
+    $hex = str_replace('#', '', $hex);
+
+    if (strlen($hex) === 3) {
+        $hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
+    }
+
+    $r = hexdec(substr($hex, 0, 2));
+    $g = hexdec(substr($hex, 2, 2));
+    $b = hexdec(substr($hex, 4, 2));
+
+    $r = max(0, min(255, $r + ((255 - $r) * $percent / 100)));
+    $g = max(0, min(255, $g + ((255 - $g) * $percent / 100)));
+    $b = max(0, min(255, $b + ((255 - $b) * $percent / 100)));
+
+    return sprintf("#%02x%02x%02x", $r, $g, $b);
+}

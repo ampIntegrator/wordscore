@@ -32,21 +32,39 @@ Classes CSS générées dynamiquement
 
 ## Mapping Bootstrap
 
-Les couleurs Bootstrap `primary` et `secondary` sont **automatiquement mappées** sur `theme1` et `theme2` :
+Les couleurs Bootstrap `primary` et `secondary` sont **automatiquement mappées** sur `theme1` et `theme2` avec **TOUTES les variantes Bootstrap 5** :
+
+### Variables Bootstrap Primary (theme1)
 
 ```css
---bs-primary: var(--colorTheme1);
---bs-secondary: var(--colorTheme2);
+--bs-primary: theme1_color
+--bs-primary-rgb: calculé automatiquement
+--bs-primary-text-emphasis: theme1 assombri de 60%
+--bs-primary-bg-subtle: theme1 éclairci de 80%
+--bs-primary-border-subtle: theme1 éclairci de 60%
 ```
 
-### Classes Bootstrap surchargées dynamiquement
+### Variables Bootstrap Secondary (theme2)
 
-Les classes suivantes utilisent les couleurs ACF :
+```css
+--bs-secondary: theme2_color
+--bs-secondary-rgb: calculé automatiquement
+--bs-secondary-text-emphasis: theme2 assombri de 60%
+--bs-secondary-bg-subtle: theme2 éclairci de 80%
+--bs-secondary-border-subtle: theme2 éclairci de 60%
+```
 
-- `.btn-primary` → utilise `theme1`
-- `.btn-secondary` → utilise `theme2`
-- `.btn-outline-primary` → utilise `theme1`
-- `.btn-outline-secondary` → utilise `theme2`
+### Composants Bootstrap utilisant automatiquement les couleurs ACF
+
+Tous les composants Bootstrap 5 suivent maintenant les couleurs ACF :
+
+- **Boutons:** `.btn-primary`, `.btn-secondary`, `.btn-outline-primary`, `.btn-outline-secondary`
+- **Alertes:** `.alert-primary`, `.alert-secondary`
+- **Badges:** `.badge.bg-primary`, `.badge.bg-secondary`
+- **Backgrounds:** `.bg-primary`, `.bg-secondary`, `.bg-primary-subtle`, `.bg-secondary-subtle`
+- **Borders:** `.border-primary`, `.border-secondary`, `.border-primary-subtle`, `.border-secondary-subtle`
+- **Text:** `.text-primary`, `.text-secondary`, `.text-primary-emphasis`, `.text-secondary-emphasis`
+- **Et tous les autres composants Bootstrap utilisant primary/secondary**
 
 ## Classes disponibles
 
@@ -90,18 +108,26 @@ flexible_render_button(
 
 ## Code source
 
-### Fonction centralisée
+### Fonctions centralisées
 
 **Fichier :** `inc/cache-helpers.php`
 
-```php
-wordscore_get_theme_colors()
-```
-
-Cette fonction :
+#### `wordscore_get_theme_colors()`
 - Utilise le cache statique (mémoire)
 - Retourne un tableau avec les 7 couleurs
 - Est appelée UNE SEULE FOIS par requête
+
+#### `wordscore_hex_to_rgb($hex)`
+- Convertit une couleur hex (#RRGGBB) en format RGB (r, g, b)
+- Utilisé pour générer `--bs-primary-rgb` et `--bs-secondary-rgb`
+
+#### `wordscore_darken_color($hex, $percent)`
+- Assombrit une couleur d'un pourcentage (0-100)
+- Utilisé pour générer `--bs-primary-text-emphasis` et `--bs-secondary-text-emphasis`
+
+#### `wordscore_lighten_color($hex, $percent)`
+- Éclaircit une couleur d'un pourcentage (0-100)
+- Utilisé pour générer les variantes `-bg-subtle` et `-border-subtle`
 
 ### Injection des variables CSS
 

@@ -2,10 +2,43 @@
  * Offcanvas Menu Component
  *
  * Styles pour le menu mobile offcanvas (navigation latérale)
+ * et offcanvas search
  *
  * @package Bootscore_Child
  */
 
+// Offcanvas Search (all screen sizes)
+#offcanvas-search {
+    .offcanvas-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button.btn-close-custom {
+            background: none;
+            border: none;
+            opacity: 1;
+            padding: 0;
+            margin: 0;
+            font-size: 28px;
+            cursor: pointer;
+
+            &.text-dark i {
+                color: var(--colorText);
+            }
+
+            &.text-light i {
+                color: #fff;
+            }
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+}
+
+// Offcanvas Menu (mobile only)
 @media screen and (max-width: 991px) {
 
     #offcanvas-navbar {
@@ -35,6 +68,28 @@
             padding: 0;
             margin: 0;
             font-size: 24px;
+        }
+
+        button.btn-close-custom {
+            background: none;
+            border: none;
+            opacity: 1;
+            padding: 0;
+            margin: 0;
+            font-size: 24px;
+            cursor: pointer;
+
+            &.text-dark i {
+                color: var(--colorText);
+            }
+
+            &.text-light i {
+                color: #fff;
+            }
+
+            &:hover {
+                opacity: 0.7;
+            }
         }
     }
 

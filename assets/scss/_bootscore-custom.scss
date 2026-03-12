@@ -21,10 +21,14 @@
 // Some examples can be found here: https://bootscore.me/documentation/bootstrap-css-sass
 
 body{
-	opacity: 1 !important
+	opacity: 1;
 }
 
-// Text ink - utilise la couleur ink des options globales
+// Text colors
+.text-light {
+    color: #fff !important;
+}
+
 .text-ink {
     color: var(--colorText) !important;
 }

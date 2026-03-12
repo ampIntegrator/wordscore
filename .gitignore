@@ -26,3 +26,6 @@ package-lock.json
 # On garde ces fichiers car ils sont nécessaires au fonctionnement
 # assets/css/main.css
 # assets/css/main.css.map
+
+# Dossier de référence du thème parent (ne pas commiter)
+dossierThemeParent/
