@@ -1,0 +1,25 @@
+/**
+ * Bootscore Custom Styles
+ *
+ * Fichier pour les styles personnalisés additionnels qui ne rentrent
+ * pas dans les catégories components/ ou blocks/
+ *
+ * Note: Les styles ont été réorganisés dans:
+ * - components/_header.scss
+ * - components/_footer.scss
+ * - components/_offcanvas.scss
+ * - components/_flexible-blocks.scss
+ * - blocks/_bloc-hero.scss
+ * - blocks/_bloc-colonnes.scss
+ * - blocks/_bloc-contact-form.scss
+ *
+ * @package Bootscore_Child
+ */
+
+// Add your own custom code here!
+// Because this file is compiled after Bootstrap, you're also able to use Bootstrap mixins for better code.
+// Some examples can be found here: https://bootscore.me/documentation/bootstrap-css-sass
+
+body{
+	opacity: 1 !important
+}

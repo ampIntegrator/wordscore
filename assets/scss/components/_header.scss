@@ -1,0 +1,71 @@
+/**
+ * Header Component Styles
+ *
+ * Styles pour le header (#masthead), navigation toggle et classes de texte
+ *
+ * @package Bootscore_Child
+ */
+
+
+// boxing contenu :
+ul#bootscore-navbar > li:last-child a,
+ul.nav.banniere-nav li:last-child a {
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+}
+
+
+// Menu text colors (header desktop)
+// =================================
+
+.menu-text-light {
+    .nav-toggler i,
+    .navbar-nav li a,
+    .search-toggler {
+        color: white;
+    }
+}
+
+.menu-text-dark {
+    .nav-toggler i,
+    .navbar-nav li a,
+    .search-toggler {
+        color: var(--colorText);
+    }
+}
+
+// Header masthead
+// ===============
+
+#masthead {
+    z-index: 5000;
+
+    button.nav-toggler {
+        padding: 0;
+        border: 0;
+        background-color: transparent;
+
+        i {
+            font-size: 24px;
+        }
+    }
+
+    .search-toggler {
+        padding-right: 0;
+        margin-right: 0;
+        font-size: 16px;
+    }
+}
+
+// Offcanvas Search
+// ================
+
+.offcanvas.offcanvas-top {
+    min-height: unset;
+    height: auto;
+
+    // Desktop et tablette (à partir de md breakpoint: 768px)
+    @media (min-width: 768px) {
+        height: 130px;
+    }
+}

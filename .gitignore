@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# WordPress
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.bak
+
+# Node (si jamais utilisé dans le futur)
+node_modules/
+package-lock.json
+
+# CSS compilé (généré automatiquement par WordPress)
+# On garde ces fichiers car ils sont nécessaires au fonctionnement
+# assets/css/main.css
+# assets/css/main.css.map

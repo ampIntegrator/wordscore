@@ -1,0 +1,81 @@
+/**
+ * Bloc Hero
+ *
+ * Styles pour les sections hero avec support de vidéo background
+ *
+ * @package Bootscore_Child
+ */
+
+.bloc-hero {
+    position: relative;
+    overflow: hidden;
+
+    // Video background
+    // ================
+
+    .video-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        overflow: hidden;
+
+        video,
+        iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        iframe {
+            width: 100vw;
+            height: 56.25vw; // 16:9 aspect ratio
+            min-height: 100vh;
+            min-width: 177.77vh; // 16:9 aspect ratio
+        }
+    }
+
+    // Contenu au-dessus de la vidéo
+    // ==============================
+
+    .container {
+        position: relative;
+        z-index: 1;
+    }
+
+    // Background image styles
+    // =======================
+
+    &.bloc-section {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    // Classe pour plein écran
+    // =======================
+
+    &.hero-fullscreen {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box; // Pour que le padding-top ajouté en JS soit inclus dans les 100vh
+    }
+
+    // Boutons
+    // =======
+
+    .hero-buttons {
+        // Les boutons s'empilent sur mobile
+        flex-wrap: wrap;
+    }
+}

@@ -1,0 +1,68 @@
+/**
+ * Blocs Colonnes (Multiples & Custom)
+ *
+ * Styles pour les blocs de colonnes multiples et colonnes personnalisées
+ *
+ * @package Bootscore_Child
+ */
+
+// Bloc Colonnes Multiples
+// ========================
+
+.bloc-colonnes-multiples {
+    .icone-wrapper {
+        margin-bottom: 1rem;
+
+        // Mode nature (icône simple)
+        &.icone-nature {
+            i, svg {
+                // La taille et la couleur sont gérées en inline
+            }
+        }
+
+        // Mode cercle
+        &.icone-cercle {
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+
+            i, svg {
+                // La couleur hérite du parent
+            }
+        }
+    }
+
+    .content-wrapper {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 1rem;
+        }
+
+        p {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        // Pousser le bouton en bas
+        .btn {
+            margin-top: auto;
+        }
+    }
+}
+
+// Bloc Colonnes Custom
+// ====================
+
+.bloc-colonnes-custom {
+    .colonne-content {
+        width: 100%;
+        height: 100%;
+    }
+}

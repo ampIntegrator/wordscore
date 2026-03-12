@@ -1,0 +1,39 @@
+// In this file you can override the default variables of Bootstrap
+// Do you want primary to be green? Just add "$primary: #00FF00;" to this file and the theme will automatically compile the scss for you.
+
+// Colors
+$primary: #2A9CC7;
+$secondary: #fb8500;
+
+// Theme colors (pour la palette admin uniquement)
+$theme1: $primary;
+$theme2: $secondary;
+$theme3: #dc3545;
+$theme4: #0dcaf0;
+$theme5: #198754;
+$theme6: #333;
+
+// Typography
+$ink: #202224; // Body/text color
+
+// Border radius
+// =============
+$border-radius: 0;
+$border-radius-sm: 0;
+$border-radius-lg: 0;
+$border-radius-xl: 0;
+$border-radius-xxl: 0;
+$border-radius-pill: 0;
+
+// Components border-radius
+$btn-border-radius: 0;
+$btn-border-radius-sm: 0;
+$btn-border-radius-lg: 0;
+$accordion-border-radius: 0;
+$nav-tabs-border-radius: 0;
+
+// CSS Variables
+// =============================================================
+// Les couleurs, polices et tailles sont gérées dynamiquement via
+// la page "Options Globales" et injectées dans le <head> via PHP.
+// Aucune variable CSS statique ici.

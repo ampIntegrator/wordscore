@@ -1,0 +1,101 @@
+/**
+ * Footer Component Styles
+ *
+ * Styles pour les sections footer (footerMain et bootscore-footer-info)
+ *
+ * @package Bootscore_Child
+ */
+
+// Footer Main - Section principale
+// =================================
+
+.footerMain {
+
+    // Couleurs de texte globales (tout sauf images)
+    &.text-light * {
+        color: white !important;
+    }
+
+    &.text-dark * {
+        color: var(--colorText) !important;
+    }
+}
+
+// Footer Details - Section adresse/logo/socials
+// ==============================================
+
+.footerDetails {
+
+    // Logo du footer
+    a.logoFooter {
+        display: block;
+        margin-bottom: 16px;
+    }
+
+    // Nom du site
+    span {
+        font-size: 18px;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    // Lignes d'adresse
+    p {
+        margin-bottom: 8px;
+        line-height: 1.2;
+        font-size: 15px;
+    }
+
+    // Réseaux sociaux
+    ul.socials {
+        display: flex;
+        list-style: none;
+        justify-content: flex-start;
+        padding: 0;
+        margin: 16px 0 0 0;
+
+        li {
+            margin-right: 16px;
+
+            a {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+// Footer Info - Barre du bas
+// ===========================
+
+.bootscore-footer-info {
+    * {
+        opacity: 1;
+    }
+
+    // Nav links sans padding
+    a.nav-link {
+        padding: 0;
+    }
+
+    // Menu items avec margin responsive
+    #footer-menu li {
+        margin-left: 0;
+
+        @media (min-width: 768px) {
+            margin-left: 16px;
+        }
+    }
+
+    // Couleurs de texte variants
+    &.text-light {
+        #footer-menu a {
+            color: white;
+        }
+    }
+
+    &.text-dark {
+        #footer-menu a {
+            color: var(--colorText);
+        }
+    }
+}

@@ -1,0 +1,561 @@
+[
+    {
+        "key": "group_footer_options",
+        "title": "Footer",
+        "fields": [
+            {
+                "key": "field_tab_logo_footer",
+                "label": "Logo",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0,
+                "selected": 0
+            },
+            {
+                "key": "field_footer_logo",
+                "label": "Logo Footer",
+                "name": "footer_logo",
+                "aria-label": "",
+                "type": "image",
+                "instructions": "Logo affiché dans le footer",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": "",
+                "preview_size": "medium"
+            },
+            {
+                "key": "field_footer_logo_height",
+                "label": "Hauteur Logo Footer",
+                "name": "footer_logo_height",
+                "aria-label": "",
+                "type": "number",
+                "instructions": "Hauteur en pixels (largeur = auto)",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 40,
+                "min": 20,
+                "max": 200,
+                "step": 1,
+                "placeholder": "",
+                "prepend": "",
+                "append": "px"
+            },
+            {
+                "key": "field_tab_adresse_footer",
+                "label": "Adresse",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0,
+                "selected": 0
+            },
+            {
+                "key": "field_footer_address_lines",
+                "label": "Lignes Adresse",
+                "name": "footer_address_lines",
+                "aria-label": "",
+                "type": "repeater",
+                "instructions": "Ajoutez entre 1 et 4 lignes pour l'adresse",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "table",
+                "min": 1,
+                "max": 4,
+                "collapsed": "",
+                "button_label": "Ajouter une ligne",
+                "rows_per_page": 20,
+                "sub_fields": [
+                    {
+                        "key": "field_footer_address_line",
+                        "label": "Ligne",
+                        "name": "line",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "parent_repeater": "field_footer_address_lines"
+                    }
+                ]
+            },
+            {
+                "key": "field_tab_footer_top",
+                "label": "Footer Top",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0,
+                "selected": 0
+            },
+            {
+                "key": "field_footer_top_padding",
+                "label": "Padding",
+                "name": "footer_top_padding",
+                "aria-label": "",
+                "type": "number",
+                "instructions": "Padding top et bottom de la zone Footer Top (en pixels)",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 40,
+                "min": 0,
+                "max": 200,
+                "step": 1,
+                "placeholder": "",
+                "prepend": "",
+                "append": "px"
+            },
+            {
+                "key": "field_footer_top_background_color",
+                "label": "Couleur Fond",
+                "name": "footer_top_background_color",
+                "aria-label": "",
+                "type": "radio",
+                "instructions": "Couleur de fond de la zone Footer Top (.bootscore-footer-top)",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "theme1": "Thème 1",
+                    "theme2": "Thème 2",
+                    "theme3": "Thème 3",
+                    "theme4": "Thème 4",
+                    "theme5": "Thème 5",
+                    "theme6": "Thème 6",
+                    "custom": "Couleur personnalisée"
+                },
+                "default_value": "theme6",
+                "return_format": "value",
+                "allow_null": 0,
+                "other_choice": 0,
+                "layout": "horizontal",
+                "save_other_choice": 0
+            },
+            {
+                "key": "field_footer_top_background_custom_color",
+                "label": "Couleur personnalisée",
+                "name": "footer_top_background_custom_color",
+                "aria-label": "",
+                "type": "color_picker",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_footer_top_background_color",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "enable_opacity": 0,
+                "return_format": "string",
+                "custom_palette_source": "",
+                "palette_colors": "",
+                "show_color_wheel": true
+            },
+            {
+                "key": "field_footer_top_border_bottom",
+                "label": "Border Bottom",
+                "name": "footer_top_border_bottom",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "CSS complet de la bordure (ex: 2px solid #eee). Laisser vide pour aucune bordure.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "placeholder": "2px solid #eee",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_tab_footer_main",
+                "label": "Footer Main",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0,
+                "selected": 0
+            },
+            {
+                "key": "field_footer_main_activer",
+                "label": "Afficher Footer Main",
+                "name": "footer_main_activer",
+                "aria-label": "",
+                "type": "true_false",
+                "instructions": "Afficher ou masquer la section Footer Main",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 1,
+                "ui": 1,
+                "ui_on_text": "Oui",
+                "ui_off_text": "Non"
+            },
+            {
+                "key": "field_footer_padding",
+                "label": "Padding",
+                "name": "footer_padding",
+                "aria-label": "",
+                "type": "number",
+                "instructions": "Padding top et bottom du footer principal (en pixels)",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 40,
+                "min": 0,
+                "max": 200,
+                "step": 1,
+                "placeholder": "",
+                "prepend": "",
+                "append": "px"
+            },
+            {
+                "key": "field_footer_background_color",
+                "label": "Couleur Fond Footer",
+                "name": "footer_background_color",
+                "aria-label": "",
+                "type": "radio",
+                "instructions": "Couleur de fond du footer principal (.footerMain)",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "theme1": "Thème 1",
+                    "theme2": "Thème 2",
+                    "theme3": "Thème 3",
+                    "theme4": "Thème 4",
+                    "theme5": "Thème 5",
+                    "theme6": "Thème 6",
+                    "custom": "Couleur personnalisée"
+                },
+                "default_value": "theme4",
+                "return_format": "value",
+                "allow_null": 0,
+                "other_choice": 0,
+                "layout": "horizontal",
+                "save_other_choice": 0
+            },
+            {
+                "key": "field_footer_background_custom_color",
+                "label": "Couleur personnalisée Footer",
+                "name": "footer_background_custom_color",
+                "aria-label": "",
+                "type": "color_picker",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_footer_background_color",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "enable_opacity": 0,
+                "return_format": "string",
+                "custom_palette_source": "",
+                "palette_colors": "",
+                "show_color_wheel": true
+            },
+            {
+                "key": "field_footer_main_text_color",
+                "label": "Couleur Texte",
+                "name": "footer_main_text_color",
+                "aria-label": "",
+                "type": "radio",
+                "instructions": "Couleur du texte pour tout le contenu du footer principal (.footerMain)",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "light": "Texte clair (blanc)",
+                    "dark": "Texte foncé"
+                },
+                "default_value": "dark",
+                "return_format": "value",
+                "allow_null": 0,
+                "other_choice": 0,
+                "layout": "horizontal",
+                "save_other_choice": 0
+            },
+            {
+                "key": "field_tab_footer_info",
+                "label": "Footer Info",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0,
+                "selected": 0
+            },
+            {
+                "key": "field_footer_info_padding",
+                "label": "Padding",
+                "name": "footer_info_padding",
+                "aria-label": "",
+                "type": "number",
+                "instructions": "Padding top et bottom de la zone Footer Info (en pixels)",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 20,
+                "min": 0,
+                "max": 200,
+                "step": 1,
+                "placeholder": "",
+                "prepend": "",
+                "append": "px"
+            },
+            {
+                "key": "field_footer_info_border_top",
+                "label": "Border Top",
+                "name": "footer_info_border_top",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "CSS complet de la bordure supérieure (ex: 2px solid #eee). Laisser vide pour aucune bordure.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "placeholder": "2px solid #eee",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_footer_info_background_color",
+                "label": "Couleur Fond Footer Info",
+                "name": "footer_info_background_color",
+                "aria-label": "",
+                "type": "radio",
+                "instructions": "Couleur de fond de la zone Footer Info (.bootscore-footer-info)",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "theme1": "Thème 1",
+                    "theme2": "Thème 2",
+                    "theme3": "Thème 3",
+                    "theme4": "Thème 4",
+                    "theme5": "Thème 5",
+                    "theme6": "Thème 6",
+                    "custom": "Couleur personnalisée"
+                },
+                "default_value": "theme4",
+                "return_format": "value",
+                "allow_null": 0,
+                "other_choice": 0,
+                "layout": "horizontal",
+                "save_other_choice": 0
+            },
+            {
+                "key": "field_footer_info_background_custom_color",
+                "label": "Couleur personnalisée Footer Info",
+                "name": "footer_info_background_custom_color",
+                "aria-label": "",
+                "type": "color_picker",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_footer_info_background_color",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "enable_opacity": 0,
+                "return_format": "string",
+                "custom_palette_source": "",
+                "palette_colors": "",
+                "show_color_wheel": true
+            },
+            {
+                "key": "field_footer_info_text_color",
+                "label": "Couleur texte Footer Info",
+                "name": "footer_info_text_color",
+                "aria-label": "",
+                "type": "radio",
+                "instructions": "Couleur du texte dans la zone Footer Info",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "light": "Blanc (Light)",
+                    "dark": "Couleur texte (Dark)"
+                },
+                "default_value": "dark",
+                "return_format": "value",
+                "allow_null": 0,
+                "other_choice": 0,
+                "layout": "horizontal",
+                "save_other_choice": 0
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "footer"
+                }
+            ]
+        ],
+        "menu_order": 1,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "Configuration du footer",
+        "show_in_rest": 0,
+        "display_title": ""
+    }
+]

@@ -1,0 +1,23 @@
+/**
+ * Bloc Tabs
+ *
+ * Styles globaux pour les onglets
+ * Les couleurs sont gérées par bloc via CSS inline dans le template
+ * Les border-radius sont gérés dans _bootscore-variables.scss
+ *
+ * @package Bootscore_Child
+ */
+
+.bloc-tabs {
+    ul.nav.nav-tabs {
+        border: 0;
+
+        li .nav-link {
+            border: 0;
+        }
+    }
+
+    .tab-content {
+        padding: 20px;
+    }
+}

@@ -1,0 +1,120 @@
+/**
+ * Bannières Component Styles
+ *
+ * Styles pour les bannières en haut du header
+ * Deux types: Bannière Texte (alerte) et Bannière Socials + Menu
+ *
+ * @package Bootscore_Child
+ */
+
+// Container pour les deux bannières
+#bannieres {
+    // Wrapper pour les deux bannières qui peuvent s'afficher simultanément
+}
+
+// Base commune pour toutes les bannières
+.banniere {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+
+    .container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    // Couleurs de texte (applicable à chaque bannière)
+    &.text-light {
+        * {
+            color: white !important;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+    }
+
+    &.text-dark {
+        * {
+            color: var(--colorText) !important;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+// Bannière Texte (Alerte avec timer)
+// ===================================
+
+.banniere-texte {
+    .text-center {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .banniere-texte-content {
+        font-weight: 500;
+    }
+
+    .banniere-lien {
+        text-decoration: underline;
+        font-weight: 600;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+// Bannière Socials + Menu
+// =======================
+
+.banniere-socials {
+    .d-flex {
+        width: 100%;
+    }
+
+    .banniere-socials-wrapper {
+        ul.banniere-social-list {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            gap: 12px;
+
+            li {
+                a {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    .banniere-menu-wrapper {
+        ul.banniere-nav {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            gap: 16px;
+
+            li {
+                a {
+                    font-size: 14px;
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}

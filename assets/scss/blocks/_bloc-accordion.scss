@@ -1,0 +1,36 @@
+/**
+ * Bloc Accordion
+ *
+ * Styles globaux pour les accordéons
+ * Les couleurs sont gérées par bloc via CSS inline dans le template
+ * Les border-radius sont gérés dans _bootscore-variables.scss
+ *
+ * @package Bootscore_Child
+ */
+
+.bloc-accordion {
+    .accordion-button {
+        // Retirer le pseudo-élément ::after par défaut (chevron Bootstrap)
+        &::after {
+            display: none;
+        }
+
+        // Conteneur pour l'icône personnalisée
+        .accordion-icon {
+            margin-left: auto;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        // Rotation de l'icône quand l'accordion est ouvert
+        &:not(.collapsed) .accordion-icon {
+            transform: rotate(180deg);
+        }
+    }
+
+    .accordion-body {
+        // Retirer le margin-bottom du dernier élément
+        *:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

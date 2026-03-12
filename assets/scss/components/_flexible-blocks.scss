@@ -1,0 +1,32 @@
+/**
+ * Flexible Content - Global Styles
+ *
+ * Styles généraux partagés par tous les blocs flexibles
+ *
+ * @package Bootscore_Child
+ */
+
+// Gap global pour flexilder
+// =========================
+
+#flexilder {
+    .row {
+        --bs-gutter-x: var(--gap-x, 20px);
+    }
+}
+
+// Wrappers communs
+// ================
+
+.image-wrapper {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.content-wrapper {
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,106 @@
+/**
+ * Bloc Price Cards
+ *
+ * Styles pour les cartes de prix
+ *
+ * @package Bootscore_Child
+ */
+
+.bloc-price-cards {
+    .row {
+        gap: 20px;
+    }
+
+    .price-card-col {
+        max-width: 320px;
+
+        @media (max-width: 540px) {
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+
+    .price-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        &.featured {
+            border: 2px solid var(--colorTheme1);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .price-card-image {
+            width: calc(100% + (var(--card-padding) * 2));
+            height: 200px;
+            margin: calc(var(--card-padding) * -1);
+            margin-bottom: 1rem;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 8px 8px 0 0;
+        }
+
+        h3 {
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .price-display {
+            margin-bottom: 1.5rem;
+
+            .price {
+                font-size: 2.5rem;
+                font-weight: bold;
+                line-height: 1;
+            }
+
+            .currency {
+                font-size: 1.5rem;
+                margin-left: 0.25rem;
+            }
+
+            .period {
+                display: block;
+                font-size: 0.875rem;
+                color: #6c757d;
+                margin-top: 0.25rem;
+            }
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+            flex-grow: 1;
+
+            li {
+                padding: 0.5rem 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                &:before {
+                    content: "✓";
+                    color: var(--colorTheme1);
+                    font-weight: bold;
+                    margin-right: 0.5rem;
+                }
+            }
+        }
+
+        .btn {
+            margin-top: auto;
+        }
+    }
+}

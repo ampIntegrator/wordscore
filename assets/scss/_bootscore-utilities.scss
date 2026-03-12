@@ -1,0 +1,33 @@
+/**
+ * Bootscore Custom Utilities
+ *
+ * Utilitaires CSS personnalisés (classes helper)
+ * https://getbootstrap.com/docs/5.3/utilities/api/
+ *
+ * Note: Les utilitaires spécifiques aux composants ont été déplacés dans:
+ * - components/_header.scss (menu-text-light, menu-text-dark)
+ * - components/_footer.scss (text-light, text-dark pour footer-info)
+ *
+ * @package Bootscore_Child
+ */
+
+// Background theme colors
+// =======================
+
+.bg-theme1 { background-color: var(--colorTheme1) !important; }
+.bg-theme2 { background-color: var(--colorTheme2) !important; }
+.bg-theme3 { background-color: var(--colorTheme3) !important; }
+.bg-theme4 { background-color: var(--colorTheme4) !important; }
+.bg-theme5 { background-color: var(--colorTheme5) !important; }
+.bg-theme6 { background-color: var(--colorTheme6) !important; }
+
+// Text colors
+// ===========
+
+.text-light {
+    color: #fff !important;
+}
+
+.text-dark {
+    color: var(--colorText) !important;
+}

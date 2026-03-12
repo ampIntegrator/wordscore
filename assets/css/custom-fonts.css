@@ -1,0 +1,31 @@
+/**
+ * Custom Fonts
+ *
+ * Placez vos fichiers de polices (.woff, .woff2) dans /assets/fonts/
+ * et définissez vos @font-face ici.
+ *
+ * Ensuite, activez "Utiliser des polices personnalisées" dans Options Globales
+ * et saisissez les noms de vos polices dans les champs heading_font_custom et body_font_custom.
+ *
+ * Exemple :
+ *
+ * @font-face {
+ *     font-family: 'MaPolice';
+ *     src: url('../fonts/mapolice.woff2') format('woff2'),
+ *          url('../fonts/mapolice.woff') format('woff');
+ *     font-weight: 400;
+ *     font-style: normal;
+ *     font-display: swap;
+ * }
+ *
+ * @font-face {
+ *     font-family: 'MaPolice';
+ *     src: url('../fonts/mapolice-bold.woff2') format('woff2'),
+ *          url('../fonts/mapolice-bold.woff') format('woff');
+ *     font-weight: 700;
+ *     font-style: normal;
+ *     font-display: swap;
+ * }
+ */
+
+/* Ajoutez vos @font-face ici */
