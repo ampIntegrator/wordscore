@@ -5,6 +5,58 @@ All notable changes to Wordscore will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-03-12
+
+### Changed - Refonte complète du système de couleurs
+
+- **BREAKING:** Système de couleurs 100% dynamique basé sur ACF Options
+- Les classes `.btn-primary` et `.btn-secondary` utilisent maintenant `theme1` et `theme2`
+- Les classes `.bg-theme1` à `.bg-theme6` sont générées dynamiquement via PHP
+- Suppression des couleurs hardcodées dans `_bootscore-variables.scss`
+
+### Added
+
+- **Nouvelle fonction centralisée:** `wordscore_get_theme_colors()` dans `inc/cache-helpers.php`
+  - Récupère les 6 couleurs thématiques + ink en une seule fois
+  - Cache statique + performance optimale
+  - Élimine la duplication de code
+
+- **Mapping Bootstrap → Thème:**
+  - `--bs-primary` → `--colorTheme1` (theme1)
+  - `--bs-secondary` → `--colorTheme2` (theme2)
+  - Les boutons Bootstrap suivent automatiquement les couleurs ACF
+
+- **Injection des classes dans l'admin:**
+  - Nouvelle fonction `bootscore_child_inject_admin_colors()`
+  - Palette de couleurs visible en temps réel dans l'admin
+  - Classes `.bg-theme1` à `.bg-theme6` disponibles dans ACF
+
+- **Documentation:** Nouveau fichier `COLORS-SYSTEM.md` expliquant l'architecture complète
+
+### Fixed
+
+- Correction du bug où les boutons utilisaient les couleurs hardcodées SCSS au lieu des couleurs ACF
+- Suppression de la duplication de `wordscore_get_cached_option()` dans `functions.php` (2 fois)
+- Classes de background qui n'utilisaient pas les valeurs dynamiques
+
+### Performance
+
+- Réduction de 6 appels `wordscore_get_cached_option()` par page (palette admin)
+- Réduction de 6 appels supplémentaires (injection CSS globale)
+- Total: 12 appels en moins, remplacés par 1 seul appel à `wordscore_get_theme_colors()`
+
+### Migration Notes
+
+Les valeurs par défaut des couleurs ont été mises à jour:
+- `theme1_color`: `#0d6efd` (Bootstrap blue)
+- `theme2_color`: `#6c757d` (Bootstrap gray)
+- `theme3_color`: `#dc3545` (Bootstrap red)
+- `theme4_color`: `#0dcaf0` (Bootstrap cyan)
+- `theme5_color`: `#198754` (Bootstrap green)
+- `theme6_color`: `#333333` (Dark gray)
+
+Aucune action requise pour les utilisateurs existants - les couleurs sont conservées en base de données.
+
 ## [1.0.0] - 2026-03-12
 
 ### Added

@@ -114,5 +114,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "Configuration des logos du site (desktop et mobile)",
-    "show_in_rest": 0
+    "show_in_rest": 0,
+    "display_title": ""
 }

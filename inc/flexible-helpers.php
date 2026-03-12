@@ -171,10 +171,10 @@ function flexible_get_text_align_class($align) {
  * Génère la classe de couleur de texte
  *
  * @param string $color light ou dark
- * @return string Classe Bootstrap
+ * @return string Classe (text-light ou text-ink)
  */
 function flexible_get_text_color_class($color) {
-    return $color === 'light' ? 'text-light' : 'text-dark';
+    return $color === 'light' ? 'text-light' : 'text-ink';
 }
 
 /**
@@ -249,23 +249,26 @@ function flexible_get_btn_type_choices() {
  * @param string $type Type de bouton (primary, secondary, etc.)
  * @param bool $outline Bouton outline ou non
  * @param string $size Classe de taille (btn-lg, btn-sm, ou vide)
+ * @param string $text_color Couleur du texte (light, dark, ou vide)
  * @return string HTML du bouton ou chaîne vide si pas de lien
  */
-function flexible_render_button($link, $type = 'primary', $outline = false, $size = '') {
+function flexible_render_button($link, $type = 'primary', $outline = false, $size = '', $text_color = '') {
     if (!$link || empty($link['url'])) {
         return '';
     }
 
     $btn_class = flexible_get_btn_class($type, $outline);
     $size_class = $size ? ' ' . esc_attr($size) : '';
+    $text_class = $text_color ? ' ' . flexible_get_text_color_class($text_color) : '';
     $target = !empty($link['target']) ? ' target="' . esc_attr($link['target']) . '"' : '';
     $title = esc_html($link['title'] ?? 'En savoir plus');
 
     return sprintf(
-        '<a href="%s" class="btn %s%s"%s>%s</a>',
+        '<a href="%s" class="btn %s%s%s"%s>%s</a>',
         esc_url($link['url']),
         $btn_class,
         $size_class,
+        $text_class,
         $target,
         $title
     );

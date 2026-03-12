@@ -187,7 +187,10 @@
             },
             "default_value": "",
             "enable_opacity": 0,
-            "return_format": "string"
+            "return_format": "string",
+            "custom_palette_source": "",
+            "palette_colors": "",
+            "show_color_wheel": true
         },
         {
             "key": "field_header_background_gradient",
@@ -213,7 +216,9 @@
             },
             "default_value": "",
             "maxlength": "",
-            "placeholder": "linear-gradient(90deg, #ff0000, #0000ff)"
+            "placeholder": "linear-gradient(90deg, #ff0000, #0000ff)",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_offcanvas_background_color",
@@ -269,7 +274,10 @@
             },
             "default_value": "",
             "enable_opacity": 0,
-            "return_format": "string"
+            "return_format": "string",
+            "custom_palette_source": "",
+            "palette_colors": "",
+            "show_color_wheel": true
         },
         {
             "key": "field_offcanvas_text_color",
@@ -512,7 +520,10 @@
             },
             "default_value": "",
             "enable_opacity": 0,
-            "return_format": "string"
+            "return_format": "string",
+            "custom_palette_source": "",
+            "palette_colors": "",
+            "show_color_wheel": true
         },
         {
             "key": "field_search_offcanvas_text_color",
@@ -565,5 +576,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "Configuration du header et du menu mobile",
-    "show_in_rest": 0
+    "show_in_rest": 0,
+    "display_title": ""
 }

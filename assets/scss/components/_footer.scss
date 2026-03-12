@@ -11,6 +11,11 @@
 
 .footerMain {
 
+    // Retirer le soulignement des liens
+    a {
+        text-decoration: none;
+    }
+
     // Couleurs de texte globales (tout sauf images)
     &.text-light * {
         color: white !important;

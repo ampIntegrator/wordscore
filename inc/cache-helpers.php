@@ -70,3 +70,29 @@ function wordscore_clear_options_cache() {
 
 // Vider le cache quand une option ACF est sauvegardée
 add_action('acf/save_post', 'wordscore_clear_options_cache', 20);
+
+/**
+ * Récupère toutes les couleurs du thème en une seule fois
+ *
+ * Centralise la récupération des 6 couleurs thématiques + ink
+ * pour éviter la duplication de code
+ *
+ * @return array Tableau associatif des couleurs
+ */
+function wordscore_get_theme_colors() {
+    static $colors = null;
+
+    if (null === $colors) {
+        $colors = [
+            'theme1' => wordscore_get_cached_option('theme1_color', '#0d6efd'),
+            'theme2' => wordscore_get_cached_option('theme2_color', '#6c757d'),
+            'theme3' => wordscore_get_cached_option('theme3_color', '#dc3545'),
+            'theme4' => wordscore_get_cached_option('theme4_color', '#0dcaf0'),
+            'theme5' => wordscore_get_cached_option('theme5_color', '#198754'),
+            'theme6' => wordscore_get_cached_option('theme6_color', '#333333'),
+            'ink'    => wordscore_get_cached_option('ink_color', '#202224'),
+        ];
+    }
+
+    return $colors;
+}

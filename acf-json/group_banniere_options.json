@@ -1,0 +1,553 @@
+{
+    "key": "group_banniere_options",
+    "title": "Bannières",
+    "fields": [
+        {
+            "key": "field_banniere_instructions",
+            "label": "Instructions",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<strong>Important :</strong> Pour afficher le menu dans la bannière Socials + Menu, vous devez créer un menu dans <strong>Apparence → Menus</strong> et cocher l'emplacement <strong>\"Bannière Menu\"</strong>.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_tab_banniere_texte",
+            "label": "Bannière Texte",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_banniere_texte_activer",
+            "label": "Activer la bannière texte",
+            "name": "banniere_texte_activer",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Afficher la bannière texte/alerte",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Oui",
+            "ui_off_text": "Non"
+        },
+        {
+            "key": "field_banniere_texte_contenu",
+            "label": "Texte de l'alerte",
+            "name": "banniere_texte_contenu",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Message à afficher dans la bannière",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_banniere_texte_activer",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 3,
+            "placeholder": "Exemple: Livraison gratuite pour toute commande supérieure à 50€",
+            "new_lines": ""
+        },
+        {
+            "key": "field_banniere_texte_lien_url",
+            "label": "URL du lien",
+            "name": "banniere_texte_lien_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "URL vers laquelle renvoie le lien (optionnel)",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_banniere_texte_activer",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https://example.com"
+        },
+        {
+            "key": "field_banniere_texte_lien_texte",
+            "label": "Texte du lien",
+            "name": "banniere_texte_lien_texte",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Texte cliquable du lien (ex: \"En savoir plus\")",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_banniere_texte_activer",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "En savoir plus",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_banniere_texte_date_debut",
+            "label": "Date et heure de début",
+            "name": "banniere_texte_date_debut",
+            "aria-label": "",
+            "type": "date_time_picker",
+            "instructions": "À partir de quand afficher (laisser vide pour affichage immédiat)",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_banniere_texte_activer",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d/m/Y H:i",
+            "return_format": "Y-m-d H:i:s",
+            "first_day": 1,
+            "default_to_current_date": 0
+        },
+        {
+            "key": "field_banniere_texte_date_fin",
+            "label": "Date et heure de fin",
+            "name": "banniere_texte_date_fin",
+            "aria-label": "",
+            "type": "date_time_picker",
+            "instructions": "Jusqu'à quand afficher (laisser vide pour pas de limite)",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_banniere_texte_activer",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d/m/Y H:i",
+            "return_format": "Y-m-d H:i:s",
+            "first_day": 1,
+            "default_to_current_date": 0
+        },
+        {
+            "key": "field_banniere_texte_bg_color",
+            "label": "Couleur de fond",
+            "name": "banniere_texte_bg_color",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "Couleur de fond de la bannière texte",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_banniere_texte_activer",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "theme1": "Thème 1",
+                "theme2": "Thème 2",
+                "theme3": "Thème 3",
+                "theme4": "Thème 4",
+                "theme5": "Thème 5",
+                "theme6": "Thème 6",
+                "custom": "Couleur personnalisée"
+            },
+            "default_value": "theme1",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "layout": "horizontal",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_banniere_texte_bg_custom",
+            "label": "Couleur personnalisée",
+            "name": "banniere_texte_bg_custom",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_banniere_texte_activer",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_banniere_texte_bg_color",
+                        "operator": "==",
+                        "value": "custom"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "custom_palette_source": "",
+            "palette_colors": "",
+            "show_color_wheel": true
+        },
+        {
+            "key": "field_banniere_texte_text_color",
+            "label": "Couleur du texte",
+            "name": "banniere_texte_text_color",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "Couleur du texte",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_banniere_texte_activer",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "light": "Texte clair (blanc)",
+                "dark": "Texte foncé"
+            },
+            "default_value": "light",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "layout": "horizontal",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_banniere_texte_masquer_mobile",
+            "label": "Masquer sur mobile",
+            "name": "banniere_texte_masquer_mobile",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Masquer sur mobile",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_banniere_texte_activer",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Oui",
+            "ui_off_text": "Non"
+        },
+        {
+            "key": "field_tab_banniere_socials",
+            "label": "Bannière Socials + Menu",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_banniere_socials_activer",
+            "label": "Activer la bannière socials + menu",
+            "name": "banniere_socials_activer",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Afficher la bannière réseaux sociaux + menu",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Oui",
+            "ui_off_text": "Non"
+        },
+        {
+            "key": "field_banniere_socials_ordre",
+            "label": "Ordre d'affichage",
+            "name": "banniere_socials_ordre",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "Choisir l'ordre d'affichage",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_banniere_socials_activer",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "socials_menu": "Réseaux sociaux à gauche, Menu à droite",
+                "menu_socials": "Menu à gauche, Réseaux sociaux à droite"
+            },
+            "default_value": "socials_menu",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "layout": "vertical",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_banniere_socials_bg_color",
+            "label": "Couleur de fond",
+            "name": "banniere_socials_bg_color",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "Couleur de fond de la bannière socials",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_banniere_socials_activer",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "theme1": "Thème 1",
+                "theme2": "Thème 2",
+                "theme3": "Thème 3",
+                "theme4": "Thème 4",
+                "theme5": "Thème 5",
+                "theme6": "Thème 6",
+                "custom": "Couleur personnalisée"
+            },
+            "default_value": "theme6",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "layout": "horizontal",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_banniere_socials_bg_custom",
+            "label": "Couleur personnalisée",
+            "name": "banniere_socials_bg_custom",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_banniere_socials_activer",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_banniere_socials_bg_color",
+                        "operator": "==",
+                        "value": "custom"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "custom_palette_source": "",
+            "palette_colors": "",
+            "show_color_wheel": true
+        },
+        {
+            "key": "field_banniere_socials_text_color",
+            "label": "Couleur du texte",
+            "name": "banniere_socials_text_color",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "Couleur du texte",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_banniere_socials_activer",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "light": "Texte clair (blanc)",
+                "dark": "Texte foncé"
+            },
+            "default_value": "light",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "layout": "horizontal",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_banniere_socials_masquer_mobile",
+            "label": "Masquer sur mobile",
+            "name": "banniere_socials_masquer_mobile",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Masquer sur mobile",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_banniere_socials_activer",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Oui",
+            "ui_off_text": "Non"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "header"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": ""
+}

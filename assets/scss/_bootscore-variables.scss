@@ -1,17 +1,21 @@
 // In this file you can override the default variables of Bootstrap
 // Do you want primary to be green? Just add "$primary: #00FF00;" to this file and the theme will automatically compile the scss for you.
 
-// Colors
-$primary: #2A9CC7;
-$secondary: #fb8500;
+// IMPORTANT: Les couleurs primary/secondary et theme1-6 sont maintenant gérées dynamiquement
+// via les options ACF et injectées comme variables CSS dans functions.php
+// Les valeurs ci-dessous sont des fallbacks pour la compilation SCSS initiale uniquement
 
-// Theme colors (pour la palette admin uniquement)
-$theme1: $primary;
-$theme2: $secondary;
+// Colors (fallbacks uniquement - les vraies valeurs viennent d'ACF)
+$primary: #0d6efd;
+$secondary: #6c757d;
+
+// Theme colors (fallbacks pour compilation SCSS - les vraies valeurs sont en CSS variables)
+$theme1: #0d6efd;
+$theme2: #6c757d;
 $theme3: #dc3545;
 $theme4: #0dcaf0;
 $theme5: #198754;
-$theme6: #333;
+$theme6: #333333;
 
 // Typography
 $ink: #202224; // Body/text color

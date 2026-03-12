@@ -133,7 +133,9 @@ $style_attr = flexible_get_padding_style($padding_top, $padding_bottom, $backgro
                             <?php echo flexible_render_button(
                                 $cta_link,
                                 $bloc['tabs_cta_type'] ?? 'primary',
-                                $bloc['tabs_cta_outline'] ?? false
+                                $bloc['tabs_cta_outline'] ?? false,
+                                '',
+                                $bloc['tabs_cta_text_color'] ?? ''
                             ); ?>
                         </div>
                     <?php endif; ?>

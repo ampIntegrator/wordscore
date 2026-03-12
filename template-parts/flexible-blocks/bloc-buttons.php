@@ -31,7 +31,9 @@ $style_attr = flexible_get_padding_style($padding_top, $padding_bottom, $backgro
                                 echo flexible_render_button(
                                     $button['link'] ?? null,
                                     $button['btn_type'] ?? 'primary',
-                                    $button['btn_outline'] ?? false
+                                    $button['btn_outline'] ?? false,
+                                    '',
+                                    $button['btn_text_color'] ?? ''
                                 );
                             endforeach; ?>
                         </div>

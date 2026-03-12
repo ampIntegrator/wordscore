@@ -23,3 +23,8 @@
 body{
 	opacity: 1 !important
 }
+
+// Text ink - utilise la couleur ink des options globales
+.text-ink {
+    color: var(--colorText) !important;
+}

@@ -27,6 +27,7 @@ $text_align_class = flexible_get_text_align_class($text_align);
 // Boutons (communs à toutes les cartes)
 $btn_type = $bloc['btn_type'] ?? 'primary';
 $btn_outline = $bloc['btn_outline'] ?? false;
+$btn_text_color = $bloc['btn_text_color'] ?? '';
 
 // Cartes (répéteur)
 $cards = $bloc['cards'] ?? [];
@@ -90,7 +91,9 @@ $style_attr = flexible_get_padding_style($padding_top, $padding_bottom, $backgro
                             $btn_html = flexible_render_button(
                                 $btn_link,
                                 $btn_type,
-                                $btn_outline
+                                $btn_outline,
+                                '',
+                                $btn_text_color
                             );
                             // Ajouter la classe w-100
                             $btn_html = str_replace('class="btn ', 'class="btn w-100 ', $btn_html);

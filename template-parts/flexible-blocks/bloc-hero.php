@@ -41,10 +41,10 @@ $logo_align_class = $logo_align_class_map[$logo_align] ?? 'text-center';
 // Contenu
 $heading_tag = flexible_get_heading_tag($bloc['heading_tag'] ?? 'h1', 'h1');
 $heading_text = $bloc['heading_text'] ?? '';
-$heading_text_color = flexible_get_text_color_class($bloc['heading_text_color'] ?? 'dark');
+$heading_text_color = flexible_get_text_color_class($bloc['heading_text_color'] ?? 'light');
 $heading_font_size_override = isset($bloc['heading_font_size_override']) ? intval($bloc['heading_font_size_override']) : 0;
 $paragraph = $bloc['paragraph'] ?? '';
-$paragraph_text_color = flexible_get_text_color_class($bloc['paragraph_text_color'] ?? 'dark');
+$paragraph_text_color = flexible_get_text_color_class($bloc['paragraph_text_color'] ?? 'light');
 $content_padding = flexible_get_padding($bloc, 'content_padding', 30);
 $content_bg_color = $bloc['content_bg_color'] ?? '#ffffff';
 
@@ -97,7 +97,8 @@ $style_attr = $height_mode === 'fullscreen'
                                     $button['link'] ?? null,
                                     $button['btn_type'] ?? 'primary',
                                     $button['btn_outline'] ?? false,
-                                    $btn_size
+                                    $btn_size,
+                                    $button['btn_text_color'] ?? ''
                                 );
                             endforeach; ?>
                         </div>

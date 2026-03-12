@@ -2,32 +2,15 @@
  * Admin Colors Only
  * Fichier minimal pour afficher uniquement la palette de couleurs dans l'admin
  * Sans charger Bootstrap ni les autres styles
- * Importe les variables depuis _bootscore-variables.scss pour une source unique
+ *
+ * IMPORTANT: Les classes bg-theme1 à bg-theme6 sont maintenant générées dynamiquement
+ * via PHP dans functions.php (bootscore_child_inject_global_css) pour utiliser
+ * les couleurs ACF en temps réel
+ *
+ * Ce fichier est conservé pour d'éventuels styles admin additionnels
  */
 
 @import "bootscore-variables";
 
-// Background classes utilisant les variables importées
-.bg-theme1 {
-    background-color: $theme1 !important;
-}
-
-.bg-theme2 {
-    background-color: $theme2 !important;
-}
-
-.bg-theme3 {
-    background-color: $theme3 !important;
-}
-
-.bg-theme4 {
-    background-color: $theme4 !important;
-}
-
-.bg-theme5 {
-    background-color: $theme5 !important;
-}
-
-.bg-theme6 {
-    background-color: $theme6 !important;
-}
+// Les classes bg-theme1 à bg-theme6 sont maintenant injectées dynamiquement via PHP
+// Elles utilisent les variables CSS --colorTheme1 à --colorTheme6

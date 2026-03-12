@@ -52,6 +52,7 @@ $content = $bloc['content'] ?? '';
 $btn_link = $bloc['btn_link'] ?? null;
 $btn_type = $bloc['btn_type'] ?? 'primary';
 $btn_outline = $bloc['btn_outline'] ?? false;
+$btn_text_color = $bloc['btn_text_color'] ?? '';
 
 // Ordre
 $order_class = flexible_get_order_class($bloc['inverser'] ?? false);
@@ -78,7 +79,9 @@ $style_attr = flexible_get_padding_style($padding_top, $padding_bottom, $backgro
                         echo flexible_render_button(
                             $btn_link,
                             $btn_type,
-                            $btn_outline
+                            $btn_outline,
+                            '',
+                            $btn_text_color
                         );
                     endif; ?>
                 </div>

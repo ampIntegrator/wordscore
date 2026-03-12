@@ -50,17 +50,6 @@ function bootscore_child_unregister_sidebars() {
  * Enregistrer les pages d'options ACF
  */
 if (function_exists('acf_add_options_page')) {
-    // Page Logos (reste dans le menu principal)
-    acf_add_options_page(array(
-        'page_title' => 'Logos',
-        'menu_title' => 'Logos',
-        'menu_slug'  => 'logos',
-        'capability' => 'edit_theme_options',
-        'icon_url'   => 'dashicons-format-image',
-        'position'   => 60,
-        'redirect'   => false
-    ));
-
     // Page Options Globales (sous Apparence)
     acf_add_options_page(array(
         'page_title' => 'Options Globales',
@@ -148,6 +137,55 @@ function bootscore_child_admin_enqueue_styles() {
 
     $modified_adminColors = date('YmdHi', filemtime(get_stylesheet_directory() . '/assets/css/admin-colors.css'));
     wp_enqueue_style('admin-colors', get_stylesheet_directory_uri() . '/assets/css/admin-colors.css', array(), $modified_adminColors);
+}
+
+/**
+ * Injecte les variables CSS et classes de couleurs dans l'admin
+ * Pour que la palette et les sélecteurs de couleurs fonctionnent correctement
+ */
+add_action('admin_head', 'bootscore_child_inject_admin_colors');
+function bootscore_child_inject_admin_colors() {
+    $screen = get_current_screen();
+
+    if (!$screen) {
+        return;
+    }
+
+    // Afficher sur les pages d'options ACF et d'édition
+    $is_options_page = (
+        strpos($screen->id, 'header') !== false ||
+        strpos($screen->id, 'footer') !== false ||
+        strpos($screen->id, 'socials') !== false ||
+        strpos($screen->id, 'banniere') !== false ||
+        strpos($screen->id, 'logos') !== false ||
+        strpos($screen->id, 'global') !== false
+    );
+
+    $is_post_edit = in_array($screen->base, array('post', 'page'));
+
+    if (!$is_options_page && !$is_post_edit) {
+        return;
+    }
+
+    // Récupérer les couleurs
+    $colors = wordscore_get_theme_colors();
+
+    echo '<style id="admin-theme-colors">';
+    echo ':root {';
+    echo '--colorTheme1: ' . esc_attr($colors['theme1']) . ';';
+    echo '--colorTheme2: ' . esc_attr($colors['theme2']) . ';';
+    echo '--colorTheme3: ' . esc_attr($colors['theme3']) . ';';
+    echo '--colorTheme4: ' . esc_attr($colors['theme4']) . ';';
+    echo '--colorTheme5: ' . esc_attr($colors['theme5']) . ';';
+    echo '--colorTheme6: ' . esc_attr($colors['theme6']) . ';';
+    echo '}';
+    echo '.bg-theme1 { background-color: var(--colorTheme1) !important; }';
+    echo '.bg-theme2 { background-color: var(--colorTheme2) !important; }';
+    echo '.bg-theme3 { background-color: var(--colorTheme3) !important; }';
+    echo '.bg-theme4 { background-color: var(--colorTheme4) !important; }';
+    echo '.bg-theme5 { background-color: var(--colorTheme5) !important; }';
+    echo '.bg-theme6 { background-color: var(--colorTheme6) !important; }';
+    echo '</style>';
 }
 
 /**
@@ -344,14 +382,8 @@ function bootscore_child_inject_global_css() {
     // Font size body
     $body_size = wordscore_get_cached_option('body_font_size', 16);
 
-    // Couleurs du thème
-    $theme1 = wordscore_get_cached_option('theme1_color', '#0d6efd');
-    $theme2 = wordscore_get_cached_option('theme2_color', '#6c757d');
-    $theme3 = wordscore_get_cached_option('theme3_color', '#dc3545');
-    $theme4 = wordscore_get_cached_option('theme4_color', '#0dcaf0');
-    $theme5 = wordscore_get_cached_option('theme5_color', '#198754');
-    $theme6 = wordscore_get_cached_option('theme6_color', '#333333');
-    $ink = wordscore_get_cached_option('ink_color', '#202224');
+    // Couleurs du thème (centralisées)
+    $colors = wordscore_get_theme_colors();
 
     // Border-radius boutons
     $btn_border_radius = wordscore_get_cached_option('btn_border_radius', '0');
@@ -372,19 +404,39 @@ function bootscore_child_inject_global_css() {
     echo '--font-weight-heading: ' . intval($heading_weight) . ';';
     echo '--font-weight-body: ' . intval($body_weight) . ';';
     echo '--font-size-body: ' . intval($body_size) . 'px;';
-    echo '--colorTheme1: ' . esc_attr($theme1) . ';';
-    echo '--colorTheme2: ' . esc_attr($theme2) . ';';
-    echo '--colorTheme3: ' . esc_attr($theme3) . ';';
-    echo '--colorTheme4: ' . esc_attr($theme4) . ';';
-    echo '--colorTheme5: ' . esc_attr($theme5) . ';';
-    echo '--colorTheme6: ' . esc_attr($theme6) . ';';
-    echo '--colorText: ' . esc_attr($ink) . ';';
+    echo '--colorTheme1: ' . esc_attr($colors['theme1']) . ';';
+    echo '--colorTheme2: ' . esc_attr($colors['theme2']) . ';';
+    echo '--colorTheme3: ' . esc_attr($colors['theme3']) . ';';
+    echo '--colorTheme4: ' . esc_attr($colors['theme4']) . ';';
+    echo '--colorTheme5: ' . esc_attr($colors['theme5']) . ';';
+    echo '--colorTheme6: ' . esc_attr($colors['theme6']) . ';';
+    echo '--colorText: ' . esc_attr($colors['ink']) . ';';
+    echo '--bs-primary: ' . esc_attr($colors['theme1']) . ';';
+    echo '--bs-secondary: ' . esc_attr($colors['theme2']) . ';';
     echo '--btn-border-radius: ' . esc_attr($btn_border_radius_value) . ';';
     echo '--content-wrapper-border-radius: ' . esc_attr($content_wrapper_border_radius_value) . ';';
     echo '--image-wrapper-border-radius: ' . esc_attr($image_wrapper_border_radius_value) . ';';
     echo '}';
     echo 'body { font-family: var(--font-body); font-weight: var(--font-weight-body); font-size: var(--font-size-body); color: var(--colorText); }';
     echo 'h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 { font-family: var(--font-heading); font-weight: var(--font-weight-heading) !important; }';
+
+    // Boutons Bootstrap utilisant les couleurs dynamiques
+    echo '.btn-primary { background-color: var(--bs-primary) !important; border-color: var(--bs-primary) !important; }';
+    echo '.btn-secondary { background-color: var(--bs-secondary) !important; border-color: var(--bs-secondary) !important; }';
+    echo '.btn-outline-primary { color: var(--bs-primary) !important; border-color: var(--bs-primary) !important; }';
+    echo '.btn-outline-primary:hover { background-color: var(--bs-primary) !important; border-color: var(--bs-primary) !important; }';
+    echo '.btn-outline-secondary { color: var(--bs-secondary) !important; border-color: var(--bs-secondary) !important; }';
+    echo '.btn-outline-secondary:hover { background-color: var(--bs-secondary) !important; border-color: var(--bs-secondary) !important; }';
+
+    // Classes background pour les 6 couleurs du thème
+    echo '.bg-theme1 { background-color: var(--colorTheme1) !important; }';
+    echo '.bg-theme2 { background-color: var(--colorTheme2) !important; }';
+    echo '.bg-theme3 { background-color: var(--colorTheme3) !important; }';
+    echo '.bg-theme4 { background-color: var(--colorTheme4) !important; }';
+    echo '.bg-theme5 { background-color: var(--colorTheme5) !important; }';
+    echo '.bg-theme6 { background-color: var(--colorTheme6) !important; }';
+
+    // Border-radius
     echo '.btn { border-radius: var(--btn-border-radius) !important; }';
     echo '.content-wrapper { border-radius: var(--content-wrapper-border-radius); }';
     echo '.image-wrapper { border-radius: var(--image-wrapper-border-radius); }';
@@ -412,13 +464,8 @@ function display_color_palette_admin() {
         return;
     }
 
-    // Récupérer les couleurs dynamiquement depuis le cache
-    $theme1 = wordscore_get_cached_option('theme1_color', '#0d6efd');
-    $theme2 = wordscore_get_cached_option('theme2_color', '#6c757d');
-    $theme3 = wordscore_get_cached_option('theme3_color', '#dc3545');
-    $theme4 = wordscore_get_cached_option('theme4_color', '#0dcaf0');
-    $theme5 = wordscore_get_cached_option('theme5_color', '#198754');
-    $theme6 = wordscore_get_cached_option('theme6_color', '#333333');
+    // Récupérer les couleurs (centralisées)
+    $colors = wordscore_get_theme_colors();
 
     ?>
     <style>
@@ -457,12 +504,12 @@ function display_color_palette_admin() {
     </style>
     <div class="palette">
         <ul>
-            <li><span class="color-box" style="background-color: <?php echo esc_attr($theme1); ?>;"></span><span class="color-name">1</span></li>
-            <li><span class="color-box" style="background-color: <?php echo esc_attr($theme2); ?>;"></span><span class="color-name">2</span></li>
-            <li><span class="color-box" style="background-color: <?php echo esc_attr($theme3); ?>;"></span><span class="color-name">3</span></li>
-            <li><span class="color-box" style="background-color: <?php echo esc_attr($theme4); ?>;"></span><span class="color-name">4</span></li>
-            <li><span class="color-box" style="background-color: <?php echo esc_attr($theme5); ?>;"></span><span class="color-name">5</span></li>
-            <li><span class="color-box" style="background-color: <?php echo esc_attr($theme6); ?>;"></span><span class="color-name">6</span></li>
+            <li><span class="color-box" style="background-color: <?php echo esc_attr($colors['theme1']); ?>;"></span><span class="color-name">1</span></li>
+            <li><span class="color-box" style="background-color: <?php echo esc_attr($colors['theme2']); ?>;"></span><span class="color-name">2</span></li>
+            <li><span class="color-box" style="background-color: <?php echo esc_attr($colors['theme3']); ?>;"></span><span class="color-name">3</span></li>
+            <li><span class="color-box" style="background-color: <?php echo esc_attr($colors['theme4']); ?>;"></span><span class="color-name">4</span></li>
+            <li><span class="color-box" style="background-color: <?php echo esc_attr($colors['theme5']); ?>;"></span><span class="color-name">5</span></li>
+            <li><span class="color-box" style="background-color: <?php echo esc_attr($colors['theme6']); ?>;"></span><span class="color-name">6</span></li>
         </ul>
     </div>
     <?php

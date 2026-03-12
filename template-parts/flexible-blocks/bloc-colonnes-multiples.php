@@ -129,7 +129,9 @@ $style_attr = flexible_get_padding_style($padding_top, $padding_bottom, $backgro
                             $btn_html = flexible_render_button(
                                 $btn_link,
                                 $colonne['btn_type'] ?? 'primary',
-                                $colonne['btn_outline'] ?? false
+                                $colonne['btn_outline'] ?? false,
+                                '',
+                                $colonne['btn_text_color'] ?? ''
                             );
                             // Ajouter la classe w-100
                             $btn_html = str_replace('class="btn ', 'class="btn w-100 ', $btn_html);

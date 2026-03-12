@@ -7,7 +7,11 @@
  */
 
 
-// boxing contenu :
+// boxing contenu et espacement :
+ul#bootscore-navbar li {
+    margin-left: 8px;
+}
+
 ul#bootscore-navbar > li:last-child a,
 ul.nav.banniere-nav li:last-child a {
     margin-right: 0 !important;
@@ -51,9 +55,11 @@ ul.nav.banniere-nav li:last-child a {
     }
 
     .search-toggler {
-        padding-right: 0;
-        margin-right: 0;
+        padding: 6px 0 6px 12px;
+        margin: 0 0 0 4px !important;
+        background-color: transparent;
         font-size: 16px;
+        border: 0;
     }
 }
 
