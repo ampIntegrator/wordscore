@@ -74,7 +74,7 @@ Dès l'activation du thème, vous verrez une **notification admin** vous invitan
 **Comment ça fonctionne:**
 
 1. **Détection automatique**
-   - Dès que SCF est activé, il détecte automatiquement les fichiers JSON dans `builder/`
+   - Dès que SCF est activé, il détecte automatiquement les fichiers JSON dans `acf-json/`
    - Tous les field groups (blocs flexibles, options pages) sont reconnus
 
 2. **Synchronisation en 1 clic**
@@ -100,10 +100,12 @@ Dès l'activation du thème, vous verrez une **notification admin** vous invitan
 - 🛡️ **Sécurisé** - Pas de risque d'écrasement accidentel
 - 📦 **Version control** - Les JSON sont dans Git
 
-#### Fichiers du dossier builder/:
+**Note:** Le dossier `acf-json/` est le **nom officiel** recommandé par ACF/SCF pour le Local JSON. SCF détecte automatiquement ce dossier sans configuration supplémentaire. C'est la convention standard utilisée par tous les thèmes WordPress professionnels.
+
+#### Fichiers du dossier acf-json/:
 
 ```
-builder/
+acf-json/
 ├── flexible.json              # 🎨 Tous les blocs flexibles (10+ blocs)
 ├── options-global.json        # ⚙️ Options globales du thème
 ├── options-header.json        # 🎯 Configuration du header
@@ -116,7 +118,7 @@ builder/
 #### Que faire en cas de problème?
 
 - **SCF n'est pas installé?** → Vérifiez les notifications admin ou installez manuellement
-- **Pas de "Sync available"?** → Vérifiez que les fichiers JSON sont bien dans `builder/`
+- **Pas de "Sync available"?** → Vérifiez que les fichiers JSON sont bien dans `acf-json/`
 - **Erreur de synchronisation?** → Supprimez le field group et resynchronisez
 
 ## Pages d'options
@@ -217,7 +219,7 @@ bootscore-child/
 │   │       └── _flexible-blocks.scss
 │   └── js/
 │       └── custom.js
-├── builder/                      # 📦 Configurations SCF (à importer)
+├── acf-json/                     # 📦 SCF Local JSON (sync auto)
 │   ├── flexible.json             # Tous les blocs flexibles
 │   ├── options-global.json       # Options globales du thème
 │   ├── options-header.json       # Configuration header
@@ -298,8 +300,8 @@ Le SCSS se compile automatiquement via l'admin WordPress:
 1. Créez le template dans `template-parts/flexible-blocks/bloc-nom.php`
 2. Créez le style dans `assets/scss/blocks/_bloc-nom.scss`
 3. Importez le SCSS dans `assets/scss/main.scss`
-4. Ajoutez la définition SCF dans `builder/flexible.json`
-5. Réimportez `flexible.json` dans SCF (Tools > Import)
+4. Ajoutez la définition SCF dans `acf-json/flexible.json`
+5. SCF détectera automatiquement les changements (sync en 1 clic)
 6. Ajoutez le mapping dans `flexible.php`
 
 ## Support et contribution
