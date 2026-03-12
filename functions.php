@@ -13,6 +13,26 @@ defined('ABSPATH') || exit;
 // Include Flexible Content Builder helpers
 require_once get_stylesheet_directory() . '/inc/flexible-helpers.php';
 
+// Include TGM Plugin Activation
+require_once get_stylesheet_directory() . '/inc/tgmpa/tgmpa-config.php';
+
+/**
+ * SCF/ACF Local JSON - Synchronisation automatique des field groups
+ */
+add_filter('acf/settings/save_json', 'wordscore_acf_json_save_point');
+function wordscore_acf_json_save_point($path) {
+    // Sauvegarder les field groups dans builder/
+    return get_stylesheet_directory() . '/builder';
+}
+
+add_filter('acf/settings/load_json', 'wordscore_acf_json_load_point');
+function wordscore_acf_json_load_point($paths) {
+    // Charger les field groups depuis builder/
+    unset($paths[0]); // Retirer le path par défaut
+    $paths[] = get_stylesheet_directory() . '/builder';
+    return $paths;
+}
+
 /**
  * Enregistrer le menu de bannière
  */

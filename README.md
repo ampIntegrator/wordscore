@@ -37,14 +37,7 @@ Wordscore est un thème WordPress professionnel basé sur Bootscore, offrant:
 1. Téléchargez et installez [Bootscore](https://bootscore.me/)
 2. **N'activez PAS le thème parent**, installez uniquement
 
-### 2. Installer SCF (Secure Custom Fields)
-
-1. Allez dans **Extensions > Ajouter une extension**
-2. Recherchez **"Secure Custom Fields"**
-3. Cliquez sur **"Installer"** puis **"Activer"**
-4. C'est gratuit, pas besoin de licence!
-
-### 3. Installer Wordscore
+### 2. Installer Wordscore
 
 1. Clonez ce repository dans `/wp-content/themes/`
    ```bash
@@ -54,41 +47,58 @@ Wordscore est un thème WordPress professionnel basé sur Bootscore, offrant:
 
 2. Activez le thème "Bootscore Child" dans **Apparence > Thèmes**
 
-### 4. Importer les configurations SCF
+### 3. Installation automatique de SCF ✨
 
-**⚠️ IMPORTANT**: Cette étape est **obligatoire** pour que le thème fonctionne. Sans l'import des fichiers JSON, vous n'aurez pas accès aux blocs flexibles ni aux options de personnalisation.
+Dès l'activation du thème, vous verrez une **notification admin** vous invitant à installer **Secure Custom Fields (SCF)**.
 
-Tous les fichiers de configuration SCF se trouvent dans le dossier **`builder/`** du thème.
+**Procédure simplifiée:**
 
-#### Procédure d'import:
+1. **Notification automatique**
+   - Une bannière apparaît en haut de l'admin WordPress
+   - Message: *"Ce thème requiert le plugin suivant: Secure Custom Fields"*
 
-1. **Accédez aux outils SCF**
-   - Dans l'admin WordPress, allez dans **SCF** (menu latéral gauche)
-   - Cliquez sur **Tools** (Outils)
+2. **Installation en 1 clic**
+   - Cliquez sur **"Commencer l'installation du plugin"**
+   - SCF se télécharge et s'installe automatiquement depuis le répertoire WordPress.org
+   - Cliquez ensuite sur **"Activer"**
 
-2. **Importez chaque fichier JSON**
-   - Dans l'onglet "Import Field Groups", cliquez sur **"Choose File"**
-   - Naviguez jusqu'à `/wp-content/themes/bootscore-child/builder/`
-   - Sélectionnez un fichier JSON
-   - Cliquez sur **"Import JSON"**
+3. **Alternative manuelle** (si la notification ne s'affiche pas)
+   - Allez dans **Extensions > Ajouter une extension**
+   - Recherchez **"Secure Custom Fields"**
+   - Installez et activez
 
-3. **Ordre d'importation recommandé:**
+### 4. Synchronisation automatique des champs SCF ✨
 
-   **a) Options Pages (dans l'ordre):**
-   - `builder/options-global.json` → Options globales (polices, couleurs, border-radius)
-   - `builder/options-header.json` → Configuration du header
-   - `builder/options-footer.json` → Configuration du footer
-   - `builder/options-banniere.json` → Bannière (optionnelle)
-   - `builder/options-socials.json` → Réseaux sociaux
-   - `builder/options-logos.json` → Gestion des logos
+**Aucun import manuel nécessaire!** Le thème utilise le système **Local JSON** de SCF.
 
-   **b) Flexible Content (en dernier):**
-   - `builder/flexible.json` → **Tous les blocs flexibles** (Hero, Image-Texte, Price Cards, etc.)
+**Comment ça fonctionne:**
 
-4. **Vérification de l'import**
+1. **Détection automatique**
+   - Dès que SCF est activé, il détecte automatiquement les fichiers JSON dans `builder/`
+   - Tous les field groups (blocs flexibles, options pages) sont reconnus
+
+2. **Synchronisation en 1 clic**
    - Allez dans **SCF > Field Groups**
-   - Vous devriez voir tous les groupes de champs importés
-   - Vérifiez que "Contenu Flexible" apparaît dans la liste
+   - Vous verrez une notification: *"Sync available"* sur chaque groupe
+   - Cliquez sur **"Sync changes"** pour chaque groupe (ou utilisez le bouton "Bulk sync")
+   - **C'est tout!**
+
+3. **Quels field groups synchroniser?**
+
+   Vous devriez voir 7 groupes à synchroniser:
+   - ✅ **Contenu Flexible** - Tous les blocs (Hero, Image-Texte, Price Cards, etc.)
+   - ✅ **Options Globales** - Polices, couleurs, border-radius
+   - ✅ **Header** - Configuration du header
+   - ✅ **Footer** - Configuration du footer
+   - ✅ **Bannière** - Bannière optionnelle
+   - ✅ **Réseaux sociaux** - Liens sociaux
+   - ✅ **Logos** - Gestion des logos
+
+**Avantages du système Local JSON:**
+- 🚀 **Automatique** - Détecte les nouveaux champs
+- 🔄 **Synchronisation** - Garde vos champs à jour
+- 🛡️ **Sécurisé** - Pas de risque d'écrasement accidentel
+- 📦 **Version control** - Les JSON sont dans Git
 
 #### Fichiers du dossier builder/:
 
@@ -103,12 +113,11 @@ builder/
 └── options-logos.json         # 🖼️ Gestion des logos
 ```
 
-#### Que faire en cas d'erreur d'import?
+#### Que faire en cas de problème?
 
-- Vérifiez que **SCF (Secure Custom Fields)** est bien activé
-- Vérifiez que le fichier JSON n'est pas corrompu
-- Essayez de réimporter le fichier
-- Si un groupe existe déjà, supprimez-le avant de réimporter
+- **SCF n'est pas installé?** → Vérifiez les notifications admin ou installez manuellement
+- **Pas de "Sync available"?** → Vérifiez que les fichiers JSON sont bien dans `builder/`
+- **Erreur de synchronisation?** → Supprimez le field group et resynchronisez
 
 ## Pages d'options
 
