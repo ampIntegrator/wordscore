@@ -1,6 +1,6 @@
 /*
  Theme Name:   Wordscore
- Description:  Professional WordPress Theme Builder based on Bootscore with Flexible Content Blocks
+ Description:  Professional Theme Builder for WordPress (Based on Bootscore). Build stunning websites with 10+ flexible content blocks, global styling options, and automatic installation. Includes Hero, Price Cards, Image-Text blocks, and more.
  Author:       ampIntegrator
  Author URI:   https://github.com/ampIntegrator
  Template:     bootscore
@@ -12,7 +12,13 @@
  License URI: https://www.gnu.org/licenses/gpl-3.0.html
  Text Domain:  wordscore
  Domain Path:  /languages
+ Tags:         flexible-content, page-builder, bootstrap, custom-colors, custom-fonts, translation-ready
 */
+
+/*
+ * Wordscore extends Bootscore with a complete Theme Builder system
+ * All custom styling is done via /assets/scss/
+ */
 
 /* 
 All style editing is done via /assets/scss/_bootscore_custom.scss
