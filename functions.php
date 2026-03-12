@@ -1,14 +1,22 @@
 <?php
 
 /**
- * @package Bootscore Child
+ * @package Wordscore
  *
- * @version 6.0.0
+ * @version 1.0.0
  */
 
 
 // Exit if accessed directly
 defined('ABSPATH') || exit;
+
+/**
+ * Load theme textdomain for translations
+ */
+add_action('after_setup_theme', 'wordscore_load_textdomain');
+function wordscore_load_textdomain() {
+    load_theme_textdomain('wordscore', get_stylesheet_directory() . '/languages');
+}
 
 // Include Flexible Content Builder helpers
 require_once get_stylesheet_directory() . '/inc/flexible-helpers.php';
@@ -24,7 +32,7 @@ require_once get_stylesheet_directory() . '/inc/tgmpa/tgmpa-config.php';
  */
 add_action('after_setup_theme', 'bootscore_child_register_menus');
 function bootscore_child_register_menus() {
-    register_nav_menu('banniere-menu', 'Bannière Menu');
+    register_nav_menu('banniere-menu', __('Bannière Menu', 'wordscore'));
 }
 
 /**

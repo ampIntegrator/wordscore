@@ -1,0 +1,129 @@
+# Copyright (C) 2026 Wordscore
+# This file is distributed under the GPL v3.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: Wordscore 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/ampIntegrator/wordscore/issues\n"
+"POT-Creation-Date: 2026-03-12 10:00:00+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"X-Generator: Wordscore 1.0.0\n"
+
+#: inc/tgmpa/tgmpa-config.php:46
+msgid "Installer les plugins requis"
+msgstr ""
+
+#: inc/tgmpa/tgmpa-config.php:47
+msgid "Installer les plugins"
+msgstr ""
+
+#: inc/tgmpa/tgmpa-config.php:48
+msgid "Installation du plugin: %s"
+msgstr ""
+
+#: inc/tgmpa/tgmpa-config.php:49
+msgid "Mise à jour du plugin: %s"
+msgstr ""
+
+#: inc/tgmpa/tgmpa-config.php:50
+msgid "Une erreur s'est produite avec l'API du plugin."
+msgstr ""
+
+#: inc/tgmpa/tgmpa-config.php:52
+msgid "Ce thème requiert le plugin suivant: %1$s."
+msgid_plural "Ce thème requiert les plugins suivants: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgmpa/tgmpa-config.php:56
+msgid "Ce thème recommande le plugin suivant: %1$s."
+msgid_plural "Ce thème recommande les plugins suivants: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgmpa/tgmpa-config.php:60
+msgid "Le plugin suivant doit être mis à jour: %1$s."
+msgid_plural "Les plugins suivants doivent être mis à jour: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgmpa/tgmpa-config.php:64
+msgid "Une mise à jour est disponible pour: %1$s."
+msgid_plural "Des mises à jour sont disponibles pour: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgmpa/tgmpa-config.php:68
+msgid "Le plugin requis suivant est inactif: %1$s."
+msgid_plural "Les plugins requis suivants sont inactifs: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgmpa/tgmpa-config.php:72
+msgid "Le plugin recommandé suivant est inactif: %1$s."
+msgid_plural "Les plugins recommandés suivants sont inactifs: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgmpa/tgmpa-config.php:76
+msgid "Installer le plugin"
+msgid_plural "Installer les plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgmpa/tgmpa-config.php:80
+msgid "Mettre à jour le plugin"
+msgid_plural "Mettre à jour les plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgmpa/tgmpa-config.php:84
+msgid "Activer le plugin"
+msgid_plural "Activer les plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgmpa/tgmpa-config.php:88
+msgid "Retour à l'installation des plugins requis"
+msgstr ""
+
+#: inc/tgmpa/tgmpa-config.php:89
+msgid "Plugin activé avec succès."
+msgstr ""
+
+#: inc/tgmpa/tgmpa-config.php:90
+msgid "Le plugin suivant a été activé: %1$s."
+msgstr ""
+
+#: inc/tgmpa/tgmpa-config.php:91
+msgid "Aucune action effectuée. Le plugin %1$s était déjà actif."
+msgstr ""
+
+#: inc/tgmpa/tgmpa-config.php:92
+msgid "Le plugin %s nécessite une version plus récente de WordPress."
+msgstr ""
+
+#: inc/tgmpa/tgmpa-config.php:93
+msgid "Tous les plugins ont été installés et activés avec succès. %1$s"
+msgstr ""
+
+#: inc/tgmpa/tgmpa-config.php:94
+msgid "Masquer cette notification"
+msgstr ""
+
+#: inc/tgmpa/tgmpa-config.php:95
+msgid "Il y a un ou plusieurs plugins requis à installer, mettre à jour ou activer."
+msgstr ""
+
+#: inc/tgmpa/tgmpa-config.php:96
+msgid "Contactez l'administrateur de ce site."
+msgstr ""
+
+#: functions.php:34
+msgid "Bannière Menu"
+msgstr ""
