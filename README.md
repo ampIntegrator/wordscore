@@ -8,7 +8,7 @@ Wordscore est un thème WordPress professionnel basé sur Bootscore, offrant:
 
 - **Système de blocs flexibles** (Flexible Content Builder)
 - **Gestion globale du design** (polices, couleurs, espacements)
-- **Page builder visuel** via ACF
+- **Page builder visuel** via SCF
 - **Performance optimisée** avec compilation SCSS automatique
 - **Responsive design** natif Bootstrap 5
 
@@ -20,8 +20,10 @@ Wordscore est un thème WordPress professionnel basé sur Bootscore, offrant:
 
 ### Plugins requis
 
-- **[Advanced Custom Fields PRO](https://www.advancedcustomfields.com/pro/)** (ACF PRO)
+- **[Secure Custom Fields](https://fr.wordpress.org/plugins/secure-custom-fields/)** (SCF) - **GRATUIT**
+  - Fork d'Advanced Custom Fields (ACF)
   - Requis pour: Flexible Content, Options Pages, Repeaters, File Upload
+  - 100% compatible avec ACF (utilise la même API)
 
 ### Plugins recommandés
 
@@ -35,10 +37,12 @@ Wordscore est un thème WordPress professionnel basé sur Bootscore, offrant:
 1. Téléchargez et installez [Bootscore](https://bootscore.me/)
 2. **N'activez PAS le thème parent**, installez uniquement
 
-### 2. Installer ACF PRO
+### 2. Installer SCF (Secure Custom Fields)
 
-1. Achetez et téléchargez ACF PRO
-2. Installez et activez le plugin
+1. Allez dans **Extensions > Ajouter une extension**
+2. Recherchez **"Secure Custom Fields"**
+3. Cliquez sur **"Installer"** puis **"Activer"**
+4. C'est gratuit, pas besoin de licence!
 
 ### 3. Installer Wordscore
 
@@ -50,15 +54,61 @@ Wordscore est un thème WordPress professionnel basé sur Bootscore, offrant:
 
 2. Activez le thème "Bootscore Child" dans **Apparence > Thèmes**
 
-### 4. Importer les configurations ACF
+### 4. Importer les configurations SCF
 
-1. Allez dans **ACF > Tools > Import**
-2. Importez les fichiers JSON dans cet ordre:
-   - `options-global.json` (Options globales: polices, couleurs, etc.)
-   - `options-header.json` (Configuration du header)
-   - `options-footer.json` (Configuration du footer)
-   - `options-socials.json` (Réseaux sociaux)
-   - `flexible.json` (Tous les blocs flexibles)
+**⚠️ IMPORTANT**: Cette étape est **obligatoire** pour que le thème fonctionne. Sans l'import des fichiers JSON, vous n'aurez pas accès aux blocs flexibles ni aux options de personnalisation.
+
+Tous les fichiers de configuration SCF se trouvent dans le dossier **`builder/`** du thème.
+
+#### Procédure d'import:
+
+1. **Accédez aux outils SCF**
+   - Dans l'admin WordPress, allez dans **SCF** (menu latéral gauche)
+   - Cliquez sur **Tools** (Outils)
+
+2. **Importez chaque fichier JSON**
+   - Dans l'onglet "Import Field Groups", cliquez sur **"Choose File"**
+   - Naviguez jusqu'à `/wp-content/themes/bootscore-child/builder/`
+   - Sélectionnez un fichier JSON
+   - Cliquez sur **"Import JSON"**
+
+3. **Ordre d'importation recommandé:**
+
+   **a) Options Pages (dans l'ordre):**
+   - `builder/options-global.json` → Options globales (polices, couleurs, border-radius)
+   - `builder/options-header.json` → Configuration du header
+   - `builder/options-footer.json` → Configuration du footer
+   - `builder/options-banniere.json` → Bannière (optionnelle)
+   - `builder/options-socials.json` → Réseaux sociaux
+   - `builder/options-logos.json` → Gestion des logos
+
+   **b) Flexible Content (en dernier):**
+   - `builder/flexible.json` → **Tous les blocs flexibles** (Hero, Image-Texte, Price Cards, etc.)
+
+4. **Vérification de l'import**
+   - Allez dans **SCF > Field Groups**
+   - Vous devriez voir tous les groupes de champs importés
+   - Vérifiez que "Contenu Flexible" apparaît dans la liste
+
+#### Fichiers du dossier builder/:
+
+```
+builder/
+├── flexible.json              # 🎨 Tous les blocs flexibles (10+ blocs)
+├── options-global.json        # ⚙️ Options globales du thème
+├── options-header.json        # 🎯 Configuration du header
+├── options-footer.json        # 📄 Configuration du footer
+├── options-banniere.json      # 🏷️ Bannière optionnelle
+├── options-socials.json       # 🔗 Réseaux sociaux
+└── options-logos.json         # 🖼️ Gestion des logos
+```
+
+#### Que faire en cas d'erreur d'import?
+
+- Vérifiez que **SCF (Secure Custom Fields)** est bien activé
+- Vérifiez que le fichier JSON n'est pas corrompu
+- Essayez de réimporter le fichier
+- Si un groupe existe déjà, supprimez-le avant de réimporter
 
 ## Pages d'options
 
@@ -143,30 +193,47 @@ bootscore-child/
 ├── assets/
 │   ├── css/
 │   │   ├── main.css              # CSS compilé (généré auto)
+│   │   ├── main.css.map          # Source map
 │   │   └── custom-fonts.css      # Template pour polices custom
 │   ├── scss/
 │   │   ├── main.scss             # Point d'entrée SCSS
 │   │   ├── _bootscore-variables.scss  # Variables Bootstrap
-│   │   ├── blocks/               # Styles des blocs
+│   │   ├── blocks/               # Styles des blocs flexibles
+│   │   │   ├── _bloc-hero.scss
+│   │   │   ├── _bloc-price-cards.scss
+│   │   │   └── ...
 │   │   └── components/           # Composants globaux
+│   │       ├── _header.scss
+│   │       ├── _footer.scss
+│   │       └── _flexible-blocks.scss
 │   └── js/
 │       └── custom.js
+├── builder/                      # 📦 Configurations SCF (à importer)
+│   ├── flexible.json             # Tous les blocs flexibles
+│   ├── options-global.json       # Options globales du thème
+│   ├── options-header.json       # Configuration header
+│   ├── options-footer.json       # Configuration footer
+│   ├── options-banniere.json     # Bannière optionnelle
+│   ├── options-socials.json      # Réseaux sociaux
+│   └── options-logos.json        # Gestion des logos
 ├── inc/
 │   └── flexible-helpers.php      # Fonctions helper pour blocs
 ├── template-parts/
-│   └── flexible-blocks/          # Templates des blocs
-│       ├── bloc-hero.php
-│       ├── bloc-image-texte.php
-│       ├── bloc-price-cards.php
-│       └── ...
-├── flexible.json                 # Définition des blocs flexibles
-├── flexible.php                  # Router des blocs
-├── options-global.json           # Config Options Globales
-├── options-header.json           # Config Header
-├── options-footer.json           # Config Footer
-├── options-socials.json          # Config Réseaux sociaux
-├── functions.php                 # Fonctions principales
-└── style.css                     # Métadonnées du thème
+│   ├── flexible-blocks/          # Templates des blocs flexibles
+│   │   ├── bloc-hero.php
+│   │   ├── bloc-image-texte.php
+│   │   ├── bloc-price-cards.php
+│   │   ├── bloc-accordion.php
+│   │   └── ...
+│   ├── header/                   # Composants header
+│   └── footer/                   # Composants footer
+├── flexible.php                  # Router des blocs flexibles
+├── functions.php                 # Fonctions principales du thème
+├── header.php                    # Template header
+├── footer.php                    # Template footer
+├── page-flexibleContent.php      # Template page avec blocs
+├── style.css                     # Métadonnées du thème
+└── README.md                     # Documentation (ce fichier)
 ```
 
 ## Utilisation
@@ -222,8 +289,8 @@ Le SCSS se compile automatiquement via l'admin WordPress:
 1. Créez le template dans `template-parts/flexible-blocks/bloc-nom.php`
 2. Créez le style dans `assets/scss/blocks/_bloc-nom.scss`
 3. Importez le SCSS dans `assets/scss/main.scss`
-4. Ajoutez la définition ACF dans `flexible.json`
-5. Réimportez `flexible.json` dans ACF
+4. Ajoutez la définition SCF dans `builder/flexible.json`
+5. Réimportez `flexible.json` dans SCF (Tools > Import)
 6. Ajoutez le mapping dans `flexible.php`
 
 ## Support et contribution
@@ -239,7 +306,7 @@ Ce thème est distribué sous licence GPL v2 ou ultérieure.
 
 - Basé sur [Bootscore](https://bootscore.me/) par bootScore
 - Utilise [Bootstrap 5](https://getbootstrap.com/)
-- Utilise [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/pro/)
+- Utilise [Secure Custom Fields](https://fr.wordpress.org/plugins/secure-custom-fields/) (SCF) - Fork gratuit d'ACF
 
 ## Auteur
 
