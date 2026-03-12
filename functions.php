@@ -13,6 +13,9 @@ defined('ABSPATH') || exit;
 // Include Flexible Content Builder helpers
 require_once get_stylesheet_directory() . '/inc/flexible-helpers.php';
 
+// Include Cache helpers
+require_once get_stylesheet_directory() . '/inc/cache-helpers.php';
+
 // Include TGM Plugin Activation
 require_once get_stylesheet_directory() . '/inc/tgmpa/tgmpa-config.php';
 
@@ -194,12 +197,12 @@ function bootscore_child_compile_scss() {
  */
 add_action('wp_head', 'bootscore_child_inject_heading_sizes', 5);
 function bootscore_child_inject_heading_sizes() {
-    $h1_size = get_field('h1_font_size', 'option') ?: 48;
-    $h2_size = get_field('h2_font_size', 'option') ?: 36;
-    $h3_size = get_field('h3_font_size', 'option') ?: 28;
-    $h4_size = get_field('h4_font_size', 'option') ?: 24;
-    $h5_size = get_field('h5_font_size', 'option') ?: 20;
-    $h6_size = get_field('h6_font_size', 'option') ?: 16;
+    $h1_size = wordscore_get_cached_option('h1_font_size', 48);
+    $h2_size = wordscore_get_cached_option('h2_font_size', 36);
+    $h3_size = wordscore_get_cached_option('h3_font_size', 28);
+    $h4_size = wordscore_get_cached_option('h4_font_size', 24);
+    $h5_size = wordscore_get_cached_option('h5_font_size', 20);
+    $h6_size = wordscore_get_cached_option('h6_font_size', 16);
 
     echo '<style id="heading-sizes">';
     echo ':root {';
@@ -219,7 +222,7 @@ function bootscore_child_inject_heading_sizes() {
 add_action('wp_head', 'bootscore_child_load_google_fonts', 1);
 function bootscore_child_load_google_fonts() {
     // Vérifier si l'utilisateur utilise des polices personnalisées
-    $use_custom_fonts = get_field('use_custom_fonts', 'option');
+    $use_custom_fonts = wordscore_get_cached_option('use_custom_fonts', false);
 
     if ($use_custom_fonts) {
         // Générer automatiquement les @font-face pour les polices uploadées
@@ -227,15 +230,15 @@ function bootscore_child_load_google_fonts() {
         return;
     }
 
-    $heading_font = get_field('heading_font', 'option') ?: 'Inter';
-    $body_font = get_field('body_font', 'option') ?: 'Inter';
+    $heading_font = wordscore_get_cached_option('heading_font', 'Inter');
+    $body_font = wordscore_get_cached_option('body_font', 'Inter');
 
     // Si custom, récupérer le nom de la police personnalisée
     if ($heading_font === 'custom') {
-        $heading_font = get_field('heading_font_custom', 'option') ?: 'Inter';
+        $heading_font = wordscore_get_cached_option('heading_font_custom', 'Inter');
     }
     if ($body_font === 'custom') {
-        $body_font = get_field('body_font_custom', 'option') ?: 'Inter';
+        $body_font = wordscore_get_cached_option('body_font_custom', 'Inter');
     }
 
     // Créer un tableau unique des polices à charger
@@ -263,8 +266,8 @@ function bootscore_child_generate_custom_font_faces() {
     echo '<style id="custom-fonts">';
 
     // Générer @font-face pour Heading Font
-    $heading_font_file = get_field('heading_custom_font_file', 'option');
-    $heading_font_weight = get_field('heading_custom_font_weight', 'option') ?: '700';
+    $heading_font_file = wordscore_get_cached_option('heading_custom_font_file', false);
+    $heading_font_weight = wordscore_get_cached_option('heading_custom_font_weight', '700');
 
     if ($heading_font_file) {
         $extension = pathinfo($heading_font_file, PATHINFO_EXTENSION);
@@ -280,8 +283,8 @@ function bootscore_child_generate_custom_font_faces() {
     }
 
     // Générer @font-face pour Body Font
-    $body_font_file = get_field('body_custom_font_file', 'option');
-    $body_font_weight = get_field('body_custom_font_weight', 'option') ?: '400';
+    $body_font_file = wordscore_get_cached_option('body_custom_font_file', false);
+    $body_font_weight = wordscore_get_cached_option('body_custom_font_weight', '400');
 
     if ($body_font_file) {
         $extension = pathinfo($body_font_file, PATHINFO_EXTENSION);
@@ -305,53 +308,53 @@ function bootscore_child_generate_custom_font_faces() {
 add_action('wp_head', 'bootscore_child_inject_global_css', 6);
 function bootscore_child_inject_global_css() {
     // Vérifier si polices personnalisées activées
-    $use_custom_fonts = get_field('use_custom_fonts', 'option');
+    $use_custom_fonts = wordscore_get_cached_option('use_custom_fonts', false);
 
     if ($use_custom_fonts) {
         // Utiliser les noms et weights de polices custom
         $heading_font = 'CustomHeading';
         $body_font = 'CustomBody';
-        $heading_weight = get_field('heading_custom_font_weight', 'option') ?: '700';
-        $body_weight = get_field('body_custom_font_weight', 'option') ?: '400';
+        $heading_weight = wordscore_get_cached_option('heading_custom_font_weight', '700');
+        $body_weight = wordscore_get_cached_option('body_custom_font_weight', '400');
     } else {
         // Utiliser les Google Fonts
-        $heading_font = get_field('heading_font', 'option') ?: 'Inter';
-        $body_font = get_field('body_font', 'option') ?: 'Inter';
+        $heading_font = wordscore_get_cached_option('heading_font', 'Inter');
+        $body_font = wordscore_get_cached_option('body_font', 'Inter');
 
         if ($heading_font === 'custom') {
-            $heading_font = get_field('heading_font_custom', 'option') ?: 'Inter';
+            $heading_font = wordscore_get_cached_option('heading_font_custom', 'Inter');
         }
         if ($body_font === 'custom') {
-            $body_font = get_field('body_font_custom', 'option') ?: 'Inter';
+            $body_font = wordscore_get_cached_option('body_font_custom', 'Inter');
         }
 
         // Font weights (Google Fonts uniquement)
-        $heading_weight = get_field('heading_font_weight', 'option') ?: '600';
-        $body_weight = get_field('body_font_weight', 'option') ?: '400';
+        $heading_weight = wordscore_get_cached_option('heading_font_weight', '600');
+        $body_weight = wordscore_get_cached_option('body_font_weight', '400');
     }
 
     // Font size body
-    $body_size = get_field('body_font_size', 'option') ?: 16;
+    $body_size = wordscore_get_cached_option('body_font_size', 16);
 
     // Couleurs du thème
-    $theme1 = get_field('theme1_color', 'option') ?: '#0d6efd';
-    $theme2 = get_field('theme2_color', 'option') ?: '#6c757d';
-    $theme3 = get_field('theme3_color', 'option') ?: '#dc3545';
-    $theme4 = get_field('theme4_color', 'option') ?: '#0dcaf0';
-    $theme5 = get_field('theme5_color', 'option') ?: '#198754';
-    $theme6 = get_field('theme6_color', 'option') ?: '#333333';
-    $ink = get_field('ink_color', 'option') ?: '#202224';
+    $theme1 = wordscore_get_cached_option('theme1_color', '#0d6efd');
+    $theme2 = wordscore_get_cached_option('theme2_color', '#6c757d');
+    $theme3 = wordscore_get_cached_option('theme3_color', '#dc3545');
+    $theme4 = wordscore_get_cached_option('theme4_color', '#0dcaf0');
+    $theme5 = wordscore_get_cached_option('theme5_color', '#198754');
+    $theme6 = wordscore_get_cached_option('theme6_color', '#333333');
+    $ink = wordscore_get_cached_option('ink_color', '#202224');
 
     // Border-radius boutons
-    $btn_border_radius = get_field('btn_border_radius', 'option') ?: '0';
+    $btn_border_radius = wordscore_get_cached_option('btn_border_radius', '0');
     $btn_border_radius_value = ($btn_border_radius === 'pill') ? '50rem' : intval($btn_border_radius) . 'px';
 
     // Border-radius content-wrapper (0-40px)
-    $content_wrapper_border_radius = get_field('content_wrapper_border_radius', 'option') ?: 8;
+    $content_wrapper_border_radius = wordscore_get_cached_option('content_wrapper_border_radius', 8);
     $content_wrapper_border_radius_value = intval($content_wrapper_border_radius) . 'px';
 
     // Border-radius image-wrapper (0-40px)
-    $image_wrapper_border_radius = get_field('image_wrapper_border_radius', 'option') ?: 8;
+    $image_wrapper_border_radius = wordscore_get_cached_option('image_wrapper_border_radius', 8);
     $image_wrapper_border_radius_value = intval($image_wrapper_border_radius) . 'px';
 
     echo '<style id="global-settings">';
@@ -401,13 +404,13 @@ function display_color_palette_admin() {
         return;
     }
 
-    // Récupérer les couleurs dynamiquement
-    $theme1 = get_field('theme1_color', 'option') ?: '#0d6efd';
-    $theme2 = get_field('theme2_color', 'option') ?: '#6c757d';
-    $theme3 = get_field('theme3_color', 'option') ?: '#dc3545';
-    $theme4 = get_field('theme4_color', 'option') ?: '#0dcaf0';
-    $theme5 = get_field('theme5_color', 'option') ?: '#198754';
-    $theme6 = get_field('theme6_color', 'option') ?: '#333333';
+    // Récupérer les couleurs dynamiquement depuis le cache
+    $theme1 = wordscore_get_cached_option('theme1_color', '#0d6efd');
+    $theme2 = wordscore_get_cached_option('theme2_color', '#6c757d');
+    $theme3 = wordscore_get_cached_option('theme3_color', '#dc3545');
+    $theme4 = wordscore_get_cached_option('theme4_color', '#0dcaf0');
+    $theme5 = wordscore_get_cached_option('theme5_color', '#198754');
+    $theme6 = wordscore_get_cached_option('theme6_color', '#333333');
 
     ?>
     <style>
