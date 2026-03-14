@@ -19,6 +19,7 @@ $content_width = $bloc['content_width'] ?? '50';
 $content_align = $bloc['content_align'] ?? 'center';
 $content_valign = $bloc['content_valign'] ?? 'center';
 $content_text_align = $bloc['content_text_align'] ?? 'center';
+$text_color = $bloc['text_color'] ?? 'light';
 $content_bg = $bloc['content_bg'] ?? 'theme1';
 $content_bg_custom = $bloc['content_bg_custom'] ?? '';
 $content_padding = intval($bloc['content_padding'] ?? 30);
@@ -35,9 +36,6 @@ $slides = $bloc['slides'] ?? [];
 if (empty($slides)) {
     return; // Pas de slides, on n'affiche rien
 }
-
-// Boutons (globaux au carousel)
-$buttons = $bloc['buttons'] ?? [];
 
 // Mapping largeurs
 $col_class_map = [
@@ -71,6 +69,9 @@ $text_align_class_map = [
     'end' => 'text-end'
 ];
 $text_align_class = $text_align_class_map[$content_text_align] ?? 'text-center';
+
+// Couleur du texte (global)
+$text_color_class = 'text-' . esc_attr($text_color);
 
 // Background content-wrapper
 $content_bg_style = '';
@@ -119,9 +120,10 @@ $wrapper_class = ($carousel_width === 'container') ? 'container' : 'container-fl
                     $text = $slide['text'] ?? '';
                     $bg_image = flexible_get_image_url($slide['bg_image'] ?? null);
                     $overlay = intval($slide['overlay'] ?? 50);
-                    $text_color = $slide['text_color'] ?? 'light';
+                    $button_link = $slide['button_link'] ?? null;
+                    $button_type = $slide['button_type'] ?? 'primary';
+                    $button_outline = $slide['button_outline'] ?? false;
 
-                    $text_color_class = 'text-' . esc_attr($text_color);
                     $active_class = ($index === 0) ? ' active' : '';
 
                     $slide_style = $carousel_height_style;
@@ -153,17 +155,9 @@ $wrapper_class = ($carousel_width === 'container') ? 'container' : 'container-fl
                                         <p class="carousel-text"><?= nl2br(esc_html($text)); ?></p>
                                         <?php endif; ?>
 
-                                        <?php if (!empty($buttons)) : ?>
-                                        <div class="carousel-buttons" style="display: flex; justify-content: <?= $content_text_align === 'start' ? 'flex-start' : ($content_text_align === 'end' ? 'flex-end' : 'center'); ?>; gap: 15px; flex-wrap: wrap;">
-                                            <?php foreach ($buttons as $button) :
-                                                echo flexible_render_button(
-                                                    $button['link'] ?? null,
-                                                    $button['btn_type'] ?? 'primary',
-                                                    $button['btn_outline'] ?? false,
-                                                    '',
-                                                    $button['btn_text_color'] ?? ''
-                                                );
-                                            endforeach; ?>
+                                        <?php if ($button_link && !empty($button_link['url'])) : ?>
+                                        <div class="carousel-button">
+                                            <?= flexible_render_button($button_link, $button_type, $button_outline); ?>
                                         </div>
                                         <?php endif; ?>
 

@@ -5846,6 +5846,23 @@
                             }
                         },
                         {
+                            "key": "field_carousel_text_color",
+                            "label": "Couleur du texte",
+                            "name": "text_color",
+                            "type": "select",
+                            "instructions": "Couleur du texte dans le content-wrapper (constant sur toutes les slides)",
+                            "choices": {
+                                "light": "Light (blanc)",
+                                "dark": "Dark (ink)"
+                            },
+                            "default_value": "light",
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
                             "key": "field_carousel_content_bg",
                             "label": "Background content-wrapper",
                             "name": "content_bg",
@@ -6020,6 +6037,48 @@
                                     }
                                 },
                                 {
+                                    "key": "field_slide_button_link",
+                                    "label": "Bouton : Lien",
+                                    "name": "button_link",
+                                    "type": "link",
+                                    "instructions": "Lien du bouton (optionnel)",
+                                    "return_format": "array",
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                },
+                                {
+                                    "key": "field_slide_button_type",
+                                    "label": "Bouton : Type",
+                                    "name": "button_type",
+                                    "type": "select",
+                                    "choices": {
+                                        "primary": "Primary",
+                                        "secondary": "Secondary"
+                                    },
+                                    "default_value": "primary",
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                },
+                                {
+                                    "key": "field_slide_button_outline",
+                                    "label": "Bouton : Outline",
+                                    "name": "button_outline",
+                                    "type": "true_false",
+                                    "default_value": 0,
+                                    "ui": 1,
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                },
+                                {
                                     "key": "field_slide_bg_image",
                                     "label": "Image de fond",
                                     "name": "bg_image",
@@ -6049,71 +6108,6 @@
                                         "class": "",
                                         "id": ""
                                     }
-                                },
-                                {
-                                    "key": "field_slide_text_color",
-                                    "label": "Couleur du texte",
-                                    "name": "text_color",
-                                    "type": "select",
-                                    "instructions": "Couleur du texte dans le content-wrapper",
-                                    "choices": {
-                                        "light": "Light (blanc)",
-                                        "dark": "Dark (ink)"
-                                    },
-                                    "default_value": "light",
-                                    "wrapper": {
-                                        "width": "33",
-                                        "class": "",
-                                        "id": ""
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            "key": "field_carousel_buttons",
-                            "label": "Boutons",
-                            "name": "buttons",
-                            "type": "repeater",
-                            "layout": "table",
-                            "button_label": "Ajouter un bouton",
-                            "sub_fields": [
-                                {
-                                    "key": "field_carousel_button_link",
-                                    "label": "Lien",
-                                    "name": "link",
-                                    "type": "link",
-                                    "return_format": "array"
-                                },
-                                {
-                                    "key": "field_carousel_button_type",
-                                    "label": "Type",
-                                    "name": "btn_type",
-                                    "type": "select",
-                                    "choices": {
-                                        "primary": "Primary",
-                                        "secondary": "Secondary"
-                                    },
-                                    "default_value": "primary"
-                                },
-                                {
-                                    "key": "field_carousel_button_outline",
-                                    "label": "Outline",
-                                    "name": "btn_outline",
-                                    "type": "true_false",
-                                    "default_value": 0,
-                                    "ui": 1
-                                },
-                                {
-                                    "key": "field_carousel_button_text_color",
-                                    "label": "Couleur du texte",
-                                    "name": "btn_text_color",
-                                    "type": "select",
-                                    "choices": {
-                                        "": "Défaut",
-                                        "light": "Light",
-                                        "dark": "Dark"
-                                    },
-                                    "default_value": ""
                                 }
                             ]
                         }
