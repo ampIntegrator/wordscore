@@ -5990,8 +5990,8 @@
                             "label": "Couleur personnalisée",
                             "name": "content_bg_custom",
                             "aria-label": "",
-                            "type": "text",
-                            "instructions": "Couleur personnalisée (hex, rgb, rgba)",
+                            "type": "color_picker",
+                            "instructions": "",
                             "required": false,
                             "conditional_logic": [
                                 [
@@ -6007,11 +6007,13 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "placeholder": "Ex: rgba(255, 255, 255, 0.9)",
+                            "return_format": "string",
+                            "enable_opacity": true,
+                            "return_opacity": true,
                             "default_value": "",
-                            "maxlength": "",
-                            "prepend": "",
-                            "append": ""
+                            "custom_palette_source": "",
+                            "palette_colors": "",
+                            "show_color_wheel": true
                         },
                         {
                             "key": "field_carousel_content_padding",
@@ -6415,5 +6417,5 @@
     "description": "Flexible content builder pour construire vos pages",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1773481192
+    "modified": 1773481398
 }
