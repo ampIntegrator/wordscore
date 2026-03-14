@@ -5,6 +5,54 @@ All notable changes to Wordscore will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.5] - 2026-03-14
+
+### Added
+
+- **Nouveau bloc flexible : Carousel** 🎠
+  - Bloc carousel avec diapositives personnalisables
+  - Support pleine hauteur (100vh) ou hauteur custom (300-800px)
+  - Largeur carousel : pleine largeur ou container
+  - Content-wrapper configurable :
+    - Largeur responsive : 25%, 33%, 50%, 66%
+    - Alignement : gauche, centre, droite
+    - Background configurable (couleurs thème ou custom)
+    - Padding ajustable (0-60px)
+  - Par diapositive :
+    - Titre avec balise H libre (h1-h6)
+    - Texte (textarea)
+    - Image de fond pleine largeur
+    - Overlay sombre réglable (0-100%)
+    - Couleur texte (light/dark)
+    - Bouton (texte + URL + style primary/secondary)
+  - Contrôles personnalisables :
+    - Flèches gauche/droite (icônes configurables via Global > Icônes)
+    - Pagination optionnelle (indicateurs)
+    - Autoplay optionnel avec interval configurable (2-10s)
+  - Icônes par défaut : Bootstrap Icons (arrow-left-circle / arrow-right-circle)
+  - Fichiers créés :
+    - `template-parts/flexible-blocks/bloc-carousel.php`
+    - `assets/scss/blocks/_bloc-carousel.scss`
+
+- **Nouvelles icônes dans Global > Icônes**
+  - `carousel_arrow_left_icon` : Flèche gauche carousel
+  - `carousel_arrow_right_icon` : Flèche droite carousel
+
+### Changed
+
+- **Bootstrap Carousel réactivé** dans `main.scss`
+  - Nécessaire pour le nouveau bloc carousel
+  - Ajout estimé : ~15-20KB au CSS compilé
+
+### Technical
+
+- Bloc ajouté via script Python dans `group_flexilder.json`
+- Utilisation des helpers existants :
+  - `flexible_get_padding()`
+  - `flexible_get_image_url()`
+- Respect de l'architecture content-wrapper existante
+- Responsive design intégré (mobile-first)
+
 ## [1.1.4] - 2026-03-14
 
 ### Performance

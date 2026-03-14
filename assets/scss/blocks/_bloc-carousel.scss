@@ -1,0 +1,112 @@
+/**
+ * Bloc Carousel
+ *
+ * Styles pour le composant carousel avec diapositives
+ *
+ * @package Wordscore
+ */
+
+.bloc-carousel {
+  position: relative;
+
+  .carousel {
+    overflow: hidden;
+  }
+
+  .carousel-item {
+    position: relative;
+    background-color: var(--colorTheme6, #333);
+  }
+
+  .carousel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .carousel-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .content-wrapper {
+    border-radius: var(--content-wrapper-border-radius, 8px);
+
+    .carousel-title {
+      margin-bottom: 1rem;
+    }
+
+    .carousel-text {
+      margin-bottom: 1.5rem;
+    }
+
+    .carousel-btn {
+      margin-top: 0.5rem;
+    }
+  }
+
+  // Icônes des flèches (Bootstrap Icons)
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: auto;
+    height: auto;
+    background-image: none;
+    font-size: 2.5rem;
+
+    i {
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    }
+  }
+
+  // Positionnement des contrôles
+  .carousel-control-prev,
+  .carousel-control-next {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
+
+  // Pagination/Indicators
+  .carousel-indicators {
+    [data-bs-target] {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.8);
+      background-color: transparent;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+
+      &.active {
+        background-color: rgba(255,255,255,0.9);
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    .content-wrapper {
+      .carousel-title {
+        font-size: calc(var(--h2-font-size) * 0.8);
+      }
+
+      .carousel-text {
+        font-size: 0.9rem;
+      }
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      font-size: 2rem;
+    }
+  }
+}

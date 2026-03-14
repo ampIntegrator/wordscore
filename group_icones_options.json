@@ -1,0 +1,146 @@
+{
+    "key": "group_icones_options",
+    "title": "Icônes",
+    "fields": [
+        {
+            "key": "field_menu_toggle_icon",
+            "label": "Icône bouton menu mobile",
+            "name": "menu_toggle_icon",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "HTML de l'icône du bouton qui ouvre le menu mobile. Laissez vide pour utiliser l'icône par défaut.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 3,
+            "placeholder": "<i class=\"bi bi-list\"><\/i>",
+            "new_lines": ""
+        },
+        {
+            "key": "field_offcanvas_menu_close_icon",
+            "label": "Icône fermeture Offcanvas Menu",
+            "name": "offcanvas_menu_close_icon",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "HTML de l'icône de fermeture du menu offcanvas. Laissez vide pour utiliser l'icône par défaut.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 3,
+            "placeholder": "<i class=\"bi bi-x-lg\"><\/i>",
+            "new_lines": ""
+        },
+        {
+            "key": "field_search_icon_html",
+            "label": "Icône CTA Search",
+            "name": "search_icon_html",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Code HTML de l'icône du bouton de recherche",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "<i class=\"bi bi-search\"><\/i>",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "<i class=\"bi bi-search\"><\/i>",
+            "new_lines": ""
+        },
+        {
+            "key": "field_scroll_to_top_icon",
+            "label": "Icône Scroll to Top",
+            "name": "scroll_to_top_icon",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Code HTML de l'icône du bouton 'Retour en haut' (footer.php)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "<i class=\"bi bi-chevron-up\"><\/i>",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "<i class=\"bi bi-chevron-up\"><\/i>",
+            "new_lines": ""
+        },
+        {
+            "key": "field_carousel_arrow_left_icon",
+            "label": "Icône flèche gauche Carousel",
+            "name": "carousel_arrow_left_icon",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Code HTML de l'icône flèche gauche pour les carousels",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "<i class=\"bi bi-arrow-left-circle\"><\/i>",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "<i class=\"bi bi-arrow-left-circle\"><\/i>",
+            "new_lines": ""
+        },
+        {
+            "key": "field_carousel_arrow_right_icon",
+            "label": "Icône flèche droite Carousel",
+            "name": "carousel_arrow_right_icon",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Code HTML de l'icône flèche droite pour les carousels",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "<i class=\"bi bi-arrow-right-circle\"><\/i>",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "<i class=\"bi bi-arrow-right-circle\"><\/i>",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "global"
+            }
+        ]
+    ],
+    "menu_order": 6,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Gestion centralisée des icônes du thème",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1773476482
+}

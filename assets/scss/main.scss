@@ -45,7 +45,7 @@
 // @import "bootstrap/modal";       // Non utilisé - commenté pour optimisation
 // @import "bootstrap/tooltip";     // Non utilisé - commenté pour optimisation
 // @import "bootstrap/popover";     // Non utilisé - commenté pour optimisation
-// @import "bootstrap/carousel";    // Non utilisé - commenté pour optimisation
+@import "bootstrap/carousel";       // Réactivé pour bloc carousel flexible
 // @import "bootstrap/spinners";    // Non utilisé - commenté pour optimisation
 @import "bootstrap/offcanvas";
 // @import "bootstrap/placeholders"; // Non utilisé - commenté pour optimisation
@@ -66,6 +66,7 @@
 
 // Flexible Content Blocks
 @import "blocks/bloc-hero";
+@import "blocks/bloc-carousel";
 @import "blocks/bloc-colonnes";
 @import "blocks/bloc-contact-form";
 @import "blocks/bloc-tabs";
