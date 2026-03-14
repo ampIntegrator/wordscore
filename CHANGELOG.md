@@ -5,6 +5,29 @@ All notable changes to Wordscore will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.2] - 2026-03-14
+
+### Added
+
+- **Fichier d'overrides CSS centralisé:** `assets/css/acf-overrides.css`
+  - Fichier généré automatiquement depuis les Options Globales ACF
+  - Centralise tous les overrides CSS dynamiques (typographie, couleurs, boutons)
+  - Enqueued avec priorité élevée pour garantir l'override des styles Bootstrap
+  - Régénéré automatiquement à chaque sauvegarde des options ACF
+  - Contient:
+    - Variables Bootstrap pour body (font-family, font-size, font-weight, color)
+    - Variables CSS custom pour tailles de titres (--h1-font-size à --h6-font-size)
+    - Overrides des balises h1-h6 natives (pour WYSIWYG)
+    - Police et poids des headings
+    - Classes de couleurs texte (.text-light, .text-dark, .text-ink)
+    - Variables Bootstrap pour boutons (.btn-primary, .btn-secondary)
+
+### Technical
+
+- Le fichier est automatiquement recréé via `wordscore_generate_acf_overrides_css()`
+- Hook: `acf/save_post` avec priorité 20 (après la sauvegarde des champs)
+- Remplacement complet à chaque sauvegarde (pas d'édition manuelle requise)
+
 ## [1.1.1] - 2026-03-13
 
 ### Fixed

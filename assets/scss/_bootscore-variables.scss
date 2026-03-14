@@ -1,47 +1,8 @@
 // In this file you can override the default variables of Bootstrap
 // Do you want primary to be green? Just add "$primary: #00FF00;" to this file and the theme will automatically compile the scss for you.
 
-// IMPORTANT: Les couleurs primary/secondary et theme1-6 sont INJECTÉES AUTOMATIQUEMENT
-// depuis les options ACF via le filtre 'bootscore/scss/compiler' dans functions.php
+// IMPORTANT: Les couleurs primary/secondary et theme1-6 sont définies dans _acf-overrides.scss
+// Ce fichier est généré automatiquement depuis les Options Globales ACF
+// et importé dans main.scss AVANT Bootstrap
 //
-// Les valeurs sont récupérées depuis Options Globales et injectées AVANT la compilation SCSS
-// via $compiler->setVariables() - voir bootscore_child_inject_colors_to_scss()
-//
-// Vous n'avez PAS besoin de définir $primary, $secondary, $theme1-6, ou $ink ici
-// Ces variables sont automatiquement disponibles dans tous vos fichiers SCSS
-
-// Fallbacks par défaut (utilisés uniquement si ACF n'est pas configuré)
-$primary: #0d6efd !default;
-$secondary: #6c757d !default;
-$theme1: #0d6efd !default;
-$theme2: #6c757d !default;
-$theme3: #dc3545 !default;
-$theme4: #0dcaf0 !default;
-$theme5: #198754 !default;
-$theme6: #333333 !default;
-$ink: #202224 !default;
-
-// Typography
-$ink: #202224; // Body/text color
-
-// Border radius
-// =============
-$border-radius: 0;
-$border-radius-sm: 0;
-$border-radius-lg: 0;
-$border-radius-xl: 0;
-$border-radius-xxl: 0;
-$border-radius-pill: 0;
-
-// Components border-radius
-$btn-border-radius: 0;
-$btn-border-radius-sm: 0;
-$btn-border-radius-lg: 0;
-$accordion-border-radius: 0;
-$nav-tabs-border-radius: 0;
-
-// CSS Variables
-// =============================================================
-// Les couleurs, polices et tailles sont gérées dynamiquement via
-// la page "Options Globales" et injectées dans le <head> via PHP.
-// Aucune variable CSS statique ici.
+// Les fallbacks ci-dessous ne sont utilisés que si _acf-overrides.scss n'existe pas

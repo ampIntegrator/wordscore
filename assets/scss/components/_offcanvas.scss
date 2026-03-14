@@ -10,9 +10,12 @@
 // Offcanvas Search (all screen sizes)
 #offcanvas-search {
     .offcanvas-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        .container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
 
         button.btn-close-custom {
             background: none;

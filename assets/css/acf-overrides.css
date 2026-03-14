@@ -1,0 +1,75 @@
+/* Fichier généré automatiquement depuis les Options Globales ACF */
+/* Ne pas modifier manuellement - sera écrasé lors de la prochaine sauvegarde */
+
+:root,
+[data-bs-theme="light"] {
+    /* Variables Bootstrap pour le body */
+    --bs-body-font-family: "Montserrat", sans-serif !important;
+    --bs-body-font-size: 16px !important;
+    --bs-body-font-weight: 400 !important;
+    --bs-body-color: rgb(28,28,28) !important;
+    --bs-body-color-rgb: 0, 11, 40 !important;
+
+    /* Tailles de titres custom (pour les blocs flexible) */
+    --h1-font-size: 46px;
+    --h2-font-size: 32px;
+    --h3-font-size: 15px;
+    --h4-font-size: 22px;
+    --h5-font-size: 20px;
+    --h6-font-size: 18px;
+}
+
+/* Fix tailles de titres natifs (pour contenu WYSIWYG) */
+/* Pas de !important pour permettre les overrides inline */
+h1, .h1 { font-size: 46px; }
+h2, .h2 { font-size: 32px; }
+h3, .h3 { font-size: 15px; }
+h4, .h4 { font-size: 22px; }
+h5, .h5 { font-size: 20px; }
+h6, .h6 { font-size: 18px; }
+
+/* Fix police et poids des headings (tous par sécurité) */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Montserrat", sans-serif !important;
+    font-weight: 600 !important;
+}
+
+/* Classes de couleurs texte custom */
+.text-light {
+    color: #ffffff !important;
+}
+
+.text-dark {
+    color: rgb(28,28,28) !important;
+}
+
+.text-ink {
+    color: rgb(28,28,28) !important;
+}
+
+/* Override boutons Bootstrap primary */
+.btn-primary {
+    --bs-btn-bg: rgb(239,0,183);
+    --bs-btn-border-color: rgb(239,0,183);
+    --bs-btn-hover-bg: #00091f;
+    --bs-btn-hover-border-color: #00091f;
+    --bs-btn-focus-shadow-rgb: 0, 11, 35;
+    --bs-btn-active-bg: #00091d;
+    --bs-btn-active-border-color: #00091d;
+    --bs-btn-disabled-bg: rgb(239,0,183);
+    --bs-btn-disabled-border-color: rgb(239,0,183);
+}
+
+/* Override boutons Bootstrap secondary */
+.btn-secondary {
+    --bs-btn-bg: rgb(38,115,127);
+    --bs-btn-border-color: rgb(38,115,127);
+    --bs-btn-hover-bg: #000932;
+    --bs-btn-hover-border-color: #000932;
+    --bs-btn-focus-shadow-rgb: 0, 11, 56;
+    --bs-btn-active-bg: #00092f;
+    --bs-btn-active-border-color: #00092f;
+    --bs-btn-disabled-bg: rgb(38,115,127);
+    --bs-btn-disabled-border-color: rgb(38,115,127);
+}

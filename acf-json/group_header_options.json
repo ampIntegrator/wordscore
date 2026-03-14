@@ -3,118 +3,6 @@
     "title": "Header",
     "fields": [
         {
-            "key": "field_tab_logos_header",
-            "label": "Logos",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_logo_desktop",
-            "label": "Logo Desktop",
-            "name": "logo_desktop",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "Logo affiché sur desktop (tablette et écrans larges)",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "preview_size": "medium"
-        },
-        {
-            "key": "field_logo_desktop_height",
-            "label": "Hauteur Logo Desktop",
-            "name": "logo_desktop_height",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "Hauteur en pixels (largeur = auto)",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": 40,
-            "min": 20,
-            "max": 200,
-            "step": 1,
-            "placeholder": "",
-            "prepend": "",
-            "append": "px"
-        },
-        {
-            "key": "field_logo_mobile",
-            "label": "Logo Mobile",
-            "name": "logo_mobile",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "Logo affiché sur mobile",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "preview_size": "medium"
-        },
-        {
-            "key": "field_logo_mobile_height",
-            "label": "Hauteur Logo Mobile",
-            "name": "logo_mobile_height",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "Hauteur en pixels (largeur = auto)",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": 30,
-            "min": 20,
-            "max": 200,
-            "step": 1,
-            "placeholder": "",
-            "prepend": "",
-            "append": "px"
-        },
-        {
             "key": "field_tab_couleurs_header",
             "label": "Couleurs",
             "name": "",
@@ -320,12 +208,13 @@
             },
             "choices": {
                 "light": "Blanc (Light)",
-                "dark": "Couleur texte (Dark)"
+                "dark": "Couleur texte (Ink)"
             },
             "default_value": "dark",
             "return_format": "value",
             "allow_null": 0,
             "other_choice": 0,
+            "allow_in_bindings": 1,
             "layout": "horizontal",
             "save_other_choice": 0
         },
@@ -364,7 +253,7 @@
             "default_value": "",
             "maxlength": "",
             "rows": 3,
-            "placeholder": "<i class=\"bi bi-list\"></i>",
+            "placeholder": "<i class=\"bi bi-list\"><\/i>",
             "new_lines": ""
         },
         {
@@ -384,7 +273,7 @@
             "default_value": "",
             "maxlength": "",
             "rows": 3,
-            "placeholder": "<i class=\"bi bi-x-lg\"></i>",
+            "placeholder": "<i class=\"bi bi-x-lg\"><\/i>",
             "new_lines": ""
         },
         {
@@ -447,10 +336,10 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "<i class=\"bi bi-search\"></i>",
+            "default_value": "<i class=\"bi bi-search\"><\/i>",
             "maxlength": "",
             "rows": 2,
-            "placeholder": "<i class=\"bi bi-search\"></i>",
+            "placeholder": "<i class=\"bi bi-search\"><\/i>",
             "new_lines": ""
         },
         {
@@ -564,11 +453,11 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "header"
+                "value": "global"
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 2,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -577,5 +466,6 @@
     "active": true,
     "description": "Configuration du header et du menu mobile",
     "show_in_rest": 0,
-    "display_title": ""
+    "display_title": "",
+    "modified": 1773400086
 }

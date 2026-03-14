@@ -542,11 +542,11 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "footer"
+                "value": "global"
             }
         ]
     ],
-    "menu_order": 1,
+    "menu_order": 4,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -555,5 +555,6 @@
     "active": true,
     "description": "Configuration du footer",
     "show_in_rest": 0,
-    "display_title": ""
+    "display_title": "",
+    "modified": 1773400159
 }

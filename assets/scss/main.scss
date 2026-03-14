@@ -5,6 +5,9 @@
 
 @import "bootscore-variables";
 
+// Variables ACF - désormais gérées via acf-overrides.css (enqueued après main.css)
+// @import "acf-overrides";
+
 @import "bootstrap/variables";
 @import "bootstrap/variables-dark";
 
