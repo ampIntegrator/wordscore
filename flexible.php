@@ -29,6 +29,7 @@ if ( $flexilder ) : ?>
             'contact_form' => 'bloc-contact-form.php',
             'colonnes_composer' => 'bloc-colonnes-composer.php',
             'price_cards' => 'bloc-price-cards.php',
+            'carousel' => 'bloc-carousel.php',
         ];
 
         // Charger le template correspondant si il existe
