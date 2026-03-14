@@ -5889,7 +5889,7 @@
                             "key": "field_carousel_content_bg_custom",
                             "label": "Couleur personnalisée",
                             "name": "content_bg_custom",
-                            "type": "color_picker",
+                            "type": "text",
                             "conditional_logic": [
                                 [
                                     {
@@ -5903,7 +5903,9 @@
                                 "width": "33",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "instructions": "Couleur personnalisée (hex, rgb, rgba)",
+                            "placeholder": "Ex: rgba(255, 255, 255, 0.9)"
                         },
                         {
                             "key": "field_carousel_content_padding",
@@ -6037,26 +6039,31 @@
                                     }
                                 },
                                 {
-                                    "key": "field_slide_button_link",
-                                    "label": "Bouton : Lien",
-                                    "name": "button_link",
+                                    "key": "field_slide_btn_link",
+                                    "label": "Bouton (optionnel)",
+                                    "name": "btn_link",
                                     "type": "link",
-                                    "instructions": "Lien du bouton (optionnel)",
                                     "return_format": "array",
                                     "wrapper": {
-                                        "width": "50",
+                                        "width": "25",
                                         "class": "",
                                         "id": ""
                                     }
                                 },
                                 {
-                                    "key": "field_slide_button_type",
-                                    "label": "Bouton : Type",
-                                    "name": "button_type",
+                                    "key": "field_slide_btn_type",
+                                    "label": "Type de bouton",
+                                    "name": "btn_type",
                                     "type": "select",
                                     "choices": {
                                         "primary": "Primary",
-                                        "secondary": "Secondary"
+                                        "secondary": "Secondary",
+                                        "success": "Success",
+                                        "danger": "Danger",
+                                        "warning": "Warning",
+                                        "info": "Info",
+                                        "light": "Light",
+                                        "dark": "Dark"
                                     },
                                     "default_value": "primary",
                                     "wrapper": {
@@ -6066,12 +6073,29 @@
                                     }
                                 },
                                 {
-                                    "key": "field_slide_button_outline",
-                                    "label": "Bouton : Outline",
-                                    "name": "button_outline",
+                                    "key": "field_slide_btn_outline",
+                                    "label": "Bouton outline",
+                                    "name": "btn_outline",
                                     "type": "true_false",
                                     "default_value": 0,
                                     "ui": 1,
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                },
+                                {
+                                    "key": "field_slide_btn_text_color",
+                                    "label": "Couleur texte bouton",
+                                    "name": "btn_text_color",
+                                    "type": "select",
+                                    "choices": {
+                                        "": "Auto (par défaut)",
+                                        "light": "Light (blanc)",
+                                        "dark": "Dark (noir)"
+                                    },
+                                    "default_value": "",
                                     "wrapper": {
                                         "width": "25",
                                         "class": "",

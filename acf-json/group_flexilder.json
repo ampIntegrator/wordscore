@@ -5924,6 +5924,34 @@
                             "save_options": 0
                         },
                         {
+                            "key": "field_carousel_text_color",
+                            "label": "Couleur du texte",
+                            "name": "text_color",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Couleur du texte dans le content-wrapper (constant sur toutes les slides)",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "light": "Light (blanc)",
+                                "dark": "Dark (ink)"
+                            },
+                            "default_value": "light",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
                             "key": "field_carousel_content_bg",
                             "label": "Background content-wrapper",
                             "name": "content_bg",
@@ -5964,7 +5992,7 @@
                             "aria-label": "",
                             "type": "color_picker",
                             "instructions": "",
-                            "required": false,
+                            "required": 0,
                             "conditional_logic": [
                                 [
                                     {
@@ -5980,11 +6008,13 @@
                                 "id": ""
                             },
                             "default_value": "",
-                            "enable_opacity": false,
+                            "enable_opacity": 1,
+                            "return_format": "string",
+                            "allow_in_bindings": 1,
+                            "show_custom_palette": 0,
+                            "show_color_wheel": 1,
                             "custom_palette_source": "",
-                            "palette_colors": "",
-                            "show_color_wheel": true,
-                            "return_format": "string"
+                            "palette_colors": ""
                         },
                         {
                             "key": "field_carousel_content_padding",
@@ -6194,6 +6224,73 @@
                                     "parent_repeater": "field_carousel_slides"
                                 },
                                 {
+                                    "key": "field_slide_button_link",
+                                    "label": "Bouton : Lien",
+                                    "name": "button_link",
+                                    "aria-label": "",
+                                    "type": "link",
+                                    "instructions": "Lien du bouton (optionnel)",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "parent_repeater": "field_carousel_slides"
+                                },
+                                {
+                                    "key": "field_slide_button_type",
+                                    "label": "Bouton : Type",
+                                    "name": "button_type",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "primary": "Primary",
+                                        "secondary": "Secondary"
+                                    },
+                                    "default_value": "primary",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "return_format": "value",
+                                    "create_options": 0,
+                                    "save_options": 0,
+                                    "parent_repeater": "field_carousel_slides"
+                                },
+                                {
+                                    "key": "field_slide_button_outline",
+                                    "label": "Bouton : Outline",
+                                    "name": "button_outline",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": 0,
+                                    "ui": 1,
+                                    "message": "",
+                                    "ui_on_text": "",
+                                    "ui_off_text": "",
+                                    "parent_repeater": "field_carousel_slides"
+                                },
+                                {
                                     "key": "field_slide_bg_image",
                                     "label": "Image de fond",
                                     "name": "bg_image",
@@ -6240,156 +6337,6 @@
                                     "append": "%",
                                     "prepend": "",
                                     "parent_repeater": "field_carousel_slides"
-                                },
-                                {
-                                    "key": "field_slide_text_color",
-                                    "label": "Couleur du texte",
-                                    "name": "text_color",
-                                    "aria-label": "",
-                                    "type": "select",
-                                    "instructions": "Couleur du texte dans le content-wrapper",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "33",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "choices": {
-                                        "light": "Light (blanc)",
-                                        "dark": "Dark (ink)"
-                                    },
-                                    "default_value": "light",
-                                    "multiple": 0,
-                                    "allow_null": 0,
-                                    "ui": 0,
-                                    "ajax": 0,
-                                    "placeholder": "",
-                                    "return_format": "value",
-                                    "create_options": 0,
-                                    "save_options": 0,
-                                    "parent_repeater": "field_carousel_slides"
-                                },
-                                {
-                                    "key": "field_slide_buttons",
-                                    "label": "Boutons",
-                                    "name": "buttons",
-                                    "aria-label": "",
-                                    "type": "repeater",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "layout": "table",
-                                    "button_label": "Ajouter un bouton",
-                                    "min": 0,
-                                    "max": 0,
-                                    "rows_per_page": 20,
-                                    "collapsed": "",
-                                    "sub_fields": [
-                                        {
-                                            "key": "field_slide_button_link",
-                                            "label": "Lien",
-                                            "name": "link",
-                                            "aria-label": "",
-                                            "type": "link",
-                                            "instructions": "",
-                                            "required": false,
-                                            "conditional_logic": false,
-                                            "wrapper": {
-                                                "width": "",
-                                                "class": "",
-                                                "id": ""
-                                            },
-                                            "return_format": "array",
-                                            "parent_repeater": "field_slide_buttons"
-                                        },
-                                        {
-                                            "key": "field_slide_button_type",
-                                            "label": "Type",
-                                            "name": "btn_type",
-                                            "aria-label": "",
-                                            "type": "select",
-                                            "instructions": "",
-                                            "required": false,
-                                            "conditional_logic": false,
-                                            "wrapper": {
-                                                "width": "",
-                                                "class": "",
-                                                "id": ""
-                                            },
-                                            "choices": {
-                                                "primary": "Primary",
-                                                "secondary": "Secondary"
-                                            },
-                                            "default_value": "primary",
-                                            "multiple": 0,
-                                            "allow_null": 0,
-                                            "ui": 0,
-                                            "ajax": 0,
-                                            "placeholder": "",
-                                            "return_format": "value",
-                                            "create_options": 0,
-                                            "save_options": 0,
-                                            "parent_repeater": "field_slide_buttons"
-                                        },
-                                        {
-                                            "key": "field_slide_button_outline",
-                                            "label": "Outline",
-                                            "name": "btn_outline",
-                                            "aria-label": "",
-                                            "type": "true_false",
-                                            "instructions": "",
-                                            "required": false,
-                                            "conditional_logic": false,
-                                            "wrapper": {
-                                                "width": "",
-                                                "class": "",
-                                                "id": ""
-                                            },
-                                            "default_value": 0,
-                                            "ui": 1,
-                                            "message": "",
-                                            "ui_on_text": "",
-                                            "ui_off_text": "",
-                                            "parent_repeater": "field_slide_buttons"
-                                        },
-                                        {
-                                            "key": "field_slide_button_text_color",
-                                            "label": "Couleur du texte",
-                                            "name": "btn_text_color",
-                                            "aria-label": "",
-                                            "type": "select",
-                                            "instructions": "",
-                                            "required": false,
-                                            "conditional_logic": false,
-                                            "wrapper": {
-                                                "width": "",
-                                                "class": "",
-                                                "id": ""
-                                            },
-                                            "choices": {
-                                                "": "Défaut",
-                                                "light": "Light",
-                                                "dark": "Dark"
-                                            },
-                                            "default_value": false,
-                                            "multiple": 0,
-                                            "allow_null": 0,
-                                            "ui": 0,
-                                            "ajax": 0,
-                                            "placeholder": "",
-                                            "return_format": "value",
-                                            "create_options": 0,
-                                            "save_options": 0,
-                                            "parent_repeater": "field_slide_buttons"
-                                        }
-                                    ],
-                                    "parent_repeater": "field_carousel_slides"
                                 }
                             ]
                         }
@@ -6435,5 +6382,5 @@
     "description": "Flexible content builder pour construire vos pages",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1773480281
+    "modified": 1773480921
 }

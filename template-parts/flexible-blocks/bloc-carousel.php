@@ -120,9 +120,10 @@ $wrapper_class = ($carousel_width === 'container') ? 'container' : 'container-fl
                     $text = $slide['text'] ?? '';
                     $bg_image = flexible_get_image_url($slide['bg_image'] ?? null);
                     $overlay = intval($slide['overlay'] ?? 50);
-                    $button_link = $slide['button_link'] ?? null;
-                    $button_type = $slide['button_type'] ?? 'primary';
-                    $button_outline = $slide['button_outline'] ?? false;
+                    $btn_link = $slide['btn_link'] ?? null;
+                    $btn_type = $slide['btn_type'] ?? 'primary';
+                    $btn_outline = $slide['btn_outline'] ?? false;
+                    $btn_text_color = $slide['btn_text_color'] ?? '';
 
                     $active_class = ($index === 0) ? ' active' : '';
 
@@ -155,9 +156,9 @@ $wrapper_class = ($carousel_width === 'container') ? 'container' : 'container-fl
                                         <p class="carousel-text"><?= nl2br(esc_html($text)); ?></p>
                                         <?php endif; ?>
 
-                                        <?php if ($button_link && !empty($button_link['url'])) : ?>
+                                        <?php if ($btn_link && !empty($btn_link['url'])) : ?>
                                         <div class="carousel-button">
-                                            <?= flexible_render_button($button_link, $button_type, $button_outline); ?>
+                                            <?= flexible_render_button($btn_link, $btn_type, $btn_outline, '', $btn_text_color); ?>
                                         </div>
                                         <?php endif; ?>
 
