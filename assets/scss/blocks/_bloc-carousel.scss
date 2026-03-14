@@ -66,6 +66,7 @@
   .carousel-control-next {
     opacity: 0.8;
     transition: opacity 0.3s ease;
+    z-index: 10;
 
     &:hover,
     &:focus {
@@ -75,6 +76,8 @@
 
   // Pagination/Indicators
   .carousel-indicators {
+    z-index: 10;
+
     [data-bs-target] {
       width: 12px;
       height: 12px;

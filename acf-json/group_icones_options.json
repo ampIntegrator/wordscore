@@ -81,6 +81,46 @@
             "rows": 2,
             "placeholder": "<i class=\"bi bi-chevron-up\"><\/i>",
             "new_lines": ""
+        },
+        {
+            "key": "field_carousel_arrow_left_icon",
+            "label": "Icône flèche gauche Carousel",
+            "name": "carousel_arrow_left_icon",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Code HTML de l'icône flèche gauche pour les carousels",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "<i class=\"bi bi-arrow-left-circle\"><\/i>",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "<i class=\"bi bi-arrow-left-circle\"><\/i>",
+            "new_lines": ""
+        },
+        {
+            "key": "field_carousel_arrow_right_icon",
+            "label": "Icône flèche droite Carousel",
+            "name": "carousel_arrow_right_icon",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Code HTML de l'icône flèche droite pour les carousels",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "<i class=\"bi bi-arrow-right-circle\"><\/i>",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "<i class=\"bi bi-arrow-right-circle\"><\/i>",
+            "new_lines": ""
         }
     ],
     "location": [
@@ -102,5 +142,5 @@
     "description": "Gestion centralisée des icônes du thème",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1773476482
+    "modified": 1773479427
 }

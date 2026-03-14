@@ -13,12 +13,12 @@ $carousel_id = !empty($bloc['carousel_id']) ? sanitize_title($bloc['carousel_id'
 $height_type = $bloc['height_type'] ?? 'custom';
 $height_custom = intval($bloc['height_custom'] ?? 500);
 $carousel_width = $bloc['carousel_width'] ?? 'full';
-$padding_top = flexible_get_padding($bloc, 'padding_top', 0);
-$padding_bottom = flexible_get_padding($bloc, 'padding_bottom', 0);
 
 // Content wrapper
 $content_width = $bloc['content_width'] ?? '50';
 $content_align = $bloc['content_align'] ?? 'center';
+$content_valign = $bloc['content_valign'] ?? 'center';
+$content_text_align = $bloc['content_text_align'] ?? 'center';
 $content_bg = $bloc['content_bg'] ?? 'theme1';
 $content_bg_custom = $bloc['content_bg_custom'] ?? '';
 $content_padding = intval($bloc['content_padding'] ?? 30);
@@ -45,13 +45,29 @@ $col_class_map = [
 ];
 $col_class = $col_class_map[$content_width] ?? 'col-12 col-lg-6';
 
-// Alignement
+// Alignement horizontal
 $justify_class_map = [
     'start' => 'justify-content-start',
     'center' => 'justify-content-center',
     'end' => 'justify-content-end'
 ];
 $justify_class = $justify_class_map[$content_align] ?? 'justify-content-center';
+
+// Alignement vertical
+$valign_class_map = [
+    'start' => 'align-items-start',
+    'center' => 'align-items-center',
+    'end' => 'align-items-end'
+];
+$valign_class = $valign_class_map[$content_valign] ?? 'align-items-center';
+
+// Alignement interne du texte
+$text_align_class_map = [
+    'start' => 'text-start',
+    'center' => 'text-center',
+    'end' => 'text-end'
+];
+$text_align_class = $text_align_class_map[$content_text_align] ?? 'text-center';
 
 // Background content-wrapper
 $content_bg_style = '';
@@ -67,9 +83,6 @@ if ($content_bg === 'transparent') {
 // Hauteur carousel
 $carousel_height_style = ($height_type === '100vh') ? 'height: 100vh;' : "height: {$height_custom}px;";
 
-// Padding section
-$section_style = flexible_get_padding_style($padding_top, $padding_bottom);
-
 // Récupérer les icônes depuis Global Options
 $icon_left = wordscore_get_cached_option('carousel_arrow_left_icon', '<i class="bi bi-arrow-left-circle"></i>');
 $icon_right = wordscore_get_cached_option('carousel_arrow_right_icon', '<i class="bi bi-arrow-right-circle"></i>');
@@ -78,7 +91,7 @@ $icon_right = wordscore_get_cached_option('carousel_arrow_right_icon', '<i class
 $wrapper_class = ($carousel_width === 'container') ? 'container' : 'container-fluid px-0';
 ?>
 
-<section id="<?= esc_attr($carousel_id); ?>" class="bloc-carousel"<?= $section_style; ?>>
+<section id="<?= esc_attr($carousel_id); ?>" class="bloc-carousel">
     <div class="<?= esc_attr($wrapper_class); ?>">
         <div id="<?= esc_attr($carousel_id); ?>-slides" class="carousel slide" data-bs-ride="<?= $autoplay ? 'carousel' : 'false'; ?>"<?= $interval ? ' data-bs-interval="' . esc_attr($interval) . '"' : ''; ?>>
 
@@ -104,9 +117,7 @@ $wrapper_class = ($carousel_width === 'container') ? 'container' : 'container-fl
                     $bg_image = flexible_get_image_url($slide['bg_image'] ?? null);
                     $overlay = intval($slide['overlay'] ?? 50);
                     $text_color = $slide['text_color'] ?? 'light';
-                    $btn_text = $slide['btn_text'] ?? '';
-                    $btn_url = $slide['btn_url'] ?? '';
-                    $btn_style = $slide['btn_style'] ?? 'primary';
+                    $buttons = $slide['buttons'] ?? [];
 
                     $text_color_class = 'text-' . esc_attr($text_color);
                     $active_class = ($index === 0) ? ' active' : '';
@@ -125,9 +136,9 @@ $wrapper_class = ($carousel_width === 'container') ? 'container' : 'container-fl
                         <?php if ($carousel_width === 'full') : ?>
                         <div class="container h-100">
                         <?php endif; ?>
-                            <div class="row h-100 <?= esc_attr($justify_class); ?> align-items-center">
+                            <div class="row h-100 <?= esc_attr($justify_class); ?> <?= esc_attr($valign_class); ?>">
                                 <div class="<?= esc_attr($col_class); ?>">
-                                    <div class="content-wrapper <?= esc_attr($content_bg_class); ?> <?= esc_attr($text_color_class); ?>"
+                                    <div class="content-wrapper <?= esc_attr($content_bg_class); ?> <?= esc_attr($text_color_class); ?> <?= esc_attr($text_align_class); ?>"
                                          style="padding: <?= esc_attr($content_padding); ?>px;<?= $content_bg_style; ?>">
 
                                         <?php if ($title) : ?>
@@ -140,10 +151,18 @@ $wrapper_class = ($carousel_width === 'container') ? 'container' : 'container-fl
                                         <p class="carousel-text"><?= nl2br(esc_html($text)); ?></p>
                                         <?php endif; ?>
 
-                                        <?php if ($btn_text && $btn_url) : ?>
-                                        <a href="<?= esc_url($btn_url); ?>" class="btn btn-<?= esc_attr($btn_style); ?> carousel-btn">
-                                            <?= esc_html($btn_text); ?>
-                                        </a>
+                                        <?php if (!empty($buttons)) : ?>
+                                        <div class="carousel-buttons" style="display: flex; justify-content: <?= $content_text_align === 'start' ? 'flex-start' : ($content_text_align === 'end' ? 'flex-end' : 'center'); ?>; gap: 15px; flex-wrap: wrap;">
+                                            <?php foreach ($buttons as $button) :
+                                                echo flexible_render_button(
+                                                    $button['link'] ?? null,
+                                                    $button['btn_type'] ?? 'primary',
+                                                    $button['btn_outline'] ?? false,
+                                                    '',
+                                                    $button['btn_text_color'] ?? ''
+                                                );
+                                            endforeach; ?>
+                                        </div>
                                         <?php endif; ?>
 
                                     </div>

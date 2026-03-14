@@ -5747,8 +5747,8 @@
                             ],
                             "default_value": 500,
                             "min": 300,
-                            "max": 800,
-                            "step": 50,
+                            "max": 600,
+                            "step": 20,
                             "append": "px",
                             "wrapper": {
                                 "width": "50",
@@ -5766,38 +5766,6 @@
                                 "container": "Container"
                             },
                             "default_value": "full",
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            }
-                        },
-                        {
-                            "key": "field_carousel_padding_top",
-                            "label": "Padding top",
-                            "name": "padding_top",
-                            "type": "range",
-                            "default_value": 0,
-                            "min": 0,
-                            "max": 100,
-                            "step": 5,
-                            "append": "px",
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            }
-                        },
-                        {
-                            "key": "field_carousel_padding_bottom",
-                            "label": "Padding bottom",
-                            "name": "padding_bottom",
-                            "type": "range",
-                            "default_value": 0,
-                            "min": 0,
-                            "max": 100,
-                            "step": 5,
-                            "append": "px",
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -5837,6 +5805,42 @@
                             "default_value": "center",
                             "wrapper": {
                                 "width": "33",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_carousel_content_valign",
+                            "label": "Alignement vertical du content-wrapper",
+                            "name": "content_valign",
+                            "type": "select",
+                            "instructions": "Position verticale du content-wrapper",
+                            "choices": {
+                                "start": "Haut",
+                                "center": "Centre",
+                                "end": "Bas"
+                            },
+                            "default_value": "center",
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_carousel_content_text_align",
+                            "label": "Alignement interne du texte",
+                            "name": "content_text_align",
+                            "type": "select",
+                            "instructions": "Alignement du texte à l'intérieur du content-wrapper",
+                            "choices": {
+                                "start": "Gauche",
+                                "center": "Centre",
+                                "end": "Droite"
+                            },
+                            "default_value": "center",
+                            "wrapper": {
+                                "width": "34",
                                 "class": "",
                                 "id": ""
                             }
@@ -6064,42 +6068,52 @@
                                     }
                                 },
                                 {
-                                    "key": "field_slide_btn_text",
-                                    "label": "Texte du bouton",
-                                    "name": "btn_text",
-                                    "type": "text",
-                                    "wrapper": {
-                                        "width": "33",
-                                        "class": "",
-                                        "id": ""
-                                    }
-                                },
-                                {
-                                    "key": "field_slide_btn_url",
-                                    "label": "URL du bouton",
-                                    "name": "btn_url",
-                                    "type": "url",
-                                    "wrapper": {
-                                        "width": "34",
-                                        "class": "",
-                                        "id": ""
-                                    }
-                                },
-                                {
-                                    "key": "field_slide_btn_style",
-                                    "label": "Style du bouton",
-                                    "name": "btn_style",
-                                    "type": "select",
-                                    "choices": {
-                                        "primary": "Primary",
-                                        "secondary": "Secondary"
-                                    },
-                                    "default_value": "primary",
-                                    "wrapper": {
-                                        "width": "50",
-                                        "class": "",
-                                        "id": ""
-                                    }
+                                    "key": "field_slide_buttons",
+                                    "label": "Boutons",
+                                    "name": "buttons",
+                                    "type": "repeater",
+                                    "layout": "table",
+                                    "button_label": "Ajouter un bouton",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_slide_button_link",
+                                            "label": "Lien",
+                                            "name": "link",
+                                            "type": "link",
+                                            "return_format": "array"
+                                        },
+                                        {
+                                            "key": "field_slide_button_type",
+                                            "label": "Type",
+                                            "name": "btn_type",
+                                            "type": "select",
+                                            "choices": {
+                                                "primary": "Primary",
+                                                "secondary": "Secondary"
+                                            },
+                                            "default_value": "primary"
+                                        },
+                                        {
+                                            "key": "field_slide_button_outline",
+                                            "label": "Outline",
+                                            "name": "btn_outline",
+                                            "type": "true_false",
+                                            "default_value": 0,
+                                            "ui": 1
+                                        },
+                                        {
+                                            "key": "field_slide_button_text_color",
+                                            "label": "Couleur du texte",
+                                            "name": "btn_text_color",
+                                            "type": "select",
+                                            "choices": {
+                                                "": "Défaut",
+                                                "light": "Light",
+                                                "dark": "Dark"
+                                            },
+                                            "default_value": ""
+                                        }
+                                    ]
                                 }
                             ]
                         }
