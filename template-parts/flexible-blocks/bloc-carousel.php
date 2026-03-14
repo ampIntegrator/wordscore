@@ -22,7 +22,7 @@ $content_text_align = $bloc['content_text_align'] ?? 'center';
 $text_color = $bloc['text_color'] ?? 'light';
 $content_bg = $bloc['content_bg'] ?? 'theme1';
 $content_bg_custom = $bloc['content_bg_custom'] ?? '';
-$content_padding = intval($bloc['content_padding'] ?? 30);
+$content_padding = flexible_get_padding($bloc, 'content_padding', 30);
 
 // Contrôles
 $show_controls = !empty($bloc['show_controls']);
