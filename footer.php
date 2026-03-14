@@ -94,7 +94,13 @@ defined('ABSPATH') || exit;
 </footer>
 
 <!-- To top button -->
-<a href="#" class="<?= esc_attr(apply_filters('bootscore/class/footer/to_top_button', 'btn btn-primary shadow')); ?> position-fixed zi-1000 top-button" role="button" aria-label="<?php esc_attr_e('Return to top', 'bootscore' ); ?>"><?= wp_kses_post(apply_filters('bootscore/icon/chevron-up', '<i class="fa-solid fa-chevron-up" aria-hidden="true"></i>')); ?></a>
+<?php
+$scroll_icon = wordscore_get_cached_option('scroll_to_top_icon');
+if (empty($scroll_icon)) {
+    $scroll_icon = '<i class="bi bi-chevron-up"></i>';
+}
+?>
+<a href="#" class="<?= esc_attr(apply_filters('bootscore/class/footer/to_top_button', 'btn btn-primary shadow')); ?> position-fixed zi-1000 top-button" role="button" aria-label="<?php esc_attr_e('Return to top', 'bootscore' ); ?>"><?= wp_kses_post($scroll_icon); ?></a>
 
 </div><!-- #page -->
 

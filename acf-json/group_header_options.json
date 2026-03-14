@@ -219,8 +219,8 @@
             "save_other_choice": 0
         },
         {
-            "key": "field_tab_icones_header",
-            "label": "Icônes",
+            "key": "field_tab_logos",
+            "label": "Logos",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -237,44 +237,98 @@
             "selected": 0
         },
         {
-            "key": "field_menu_toggle_icon",
-            "label": "Icône bouton menu mobile",
-            "name": "menu_toggle_icon",
+            "key": "field_logo_desktop",
+            "label": "Logo Desktop",
+            "name": "logo_desktop",
             "aria-label": "",
-            "type": "textarea",
-            "instructions": "HTML de l'icône du bouton qui ouvre le menu mobile (ligne 114 header.php). Laissez vide pour utiliser l'icône par défaut.",
+            "type": "image",
+            "instructions": "Logo affiché sur desktop (tablette et écrans larges)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "rows": 3,
-            "placeholder": "<i class=\"bi bi-list\"><\/i>",
-            "new_lines": ""
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
         },
         {
-            "key": "field_offcanvas_menu_close_icon",
-            "label": "Icône fermeture Offcanvas Menu",
-            "name": "offcanvas_menu_close_icon",
+            "key": "field_logo_desktop_height",
+            "label": "Hauteur Logo Desktop",
+            "name": "logo_desktop_height",
             "aria-label": "",
-            "type": "textarea",
-            "instructions": "HTML de l'icône de fermeture du menu offcanvas (XXX dans header.php). Laissez vide pour utiliser l'icône par défaut.",
+            "type": "number",
+            "instructions": "Hauteur en pixels (largeur = auto)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "rows": 3,
-            "placeholder": "<i class=\"bi bi-x-lg\"><\/i>",
-            "new_lines": ""
+            "default_value": 40,
+            "min": 20,
+            "max": 200,
+            "step": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": "px"
+        },
+        {
+            "key": "field_logo_mobile",
+            "label": "Logo Mobile",
+            "name": "logo_mobile",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Logo affiché sur mobile",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_logo_mobile_height",
+            "label": "Hauteur Logo Mobile",
+            "name": "logo_mobile_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Hauteur en pixels (largeur = auto)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 30,
+            "min": 20,
+            "max": 200,
+            "step": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": "px"
         },
         {
             "key": "field_tab_search",
@@ -313,34 +367,6 @@
             "ui": 1,
             "ui_on_text": "Oui",
             "ui_off_text": "Non"
-        },
-        {
-            "key": "field_search_icon_html",
-            "label": "HTML Icône CTA Search",
-            "name": "search_icon_html",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "Code HTML de l'icône du bouton de recherche",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_search_activer",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "<i class=\"bi bi-search\"><\/i>",
-            "maxlength": "",
-            "rows": 2,
-            "placeholder": "<i class=\"bi bi-search\"><\/i>",
-            "new_lines": ""
         },
         {
             "key": "field_search_offcanvas_bg_color",
@@ -467,5 +493,5 @@
     "description": "Configuration du header et du menu mobile",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1773400086
+    "modified": 1773476465
 }

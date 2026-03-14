@@ -5,6 +5,96 @@ All notable changes to Wordscore will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.4] - 2026-03-14
+
+### Performance
+
+- **Consolidation des styles inline dans acf-overrides.css** ⭐⭐⭐
+  - Suppression des 2 fonctions `wp_head` qui généraient du CSS inline
+  - Tout le CSS dynamique maintenant dans `acf-overrides.css` (fichier unique mis en cache)
+  - Supprimé: `bootscore_child_inject_heading_sizes()` (variables h1-h6)
+  - Supprimé: `bootscore_child_inject_global_css()` (variables couleurs + border-radius)
+  - **Gain:** HTML plus propre + CSS mis en cache par le navigateur
+  - **Impact:** Réduction du poids HTML et meilleure performance
+
+- **Optimisation du chargement Google Fonts** ⭐⭐
+  - Chargement dynamique des poids de police configurés dans ACF (au lieu de tous)
+  - Avant: Chargement de 7 poids (300, 400, 500, 600, 700, 800, 900) = ~140KB
+  - Après: Chargement uniquement des poids utilisés (ex: 400 + 600) = ~40KB
+  - **Gain:** ~70% de réduction sur le poids des Google Fonts
+  - Les poids s'adaptent automatiquement si modifiés dans Options Globales
+
+- **Réduction de la taille du CSS compilé** ⭐
+  - Commenté les composants Bootstrap non utilisés dans `main.scss`:
+    - `bootstrap/toasts` (notifications toast)
+    - `bootstrap/modal` (fenêtres modales)
+    - `bootstrap/tooltip` (bulles d'info)
+    - `bootstrap/popover` (popups)
+    - `bootstrap/carousel` (carrousels)
+    - `bootstrap/spinners` (indicateurs de chargement)
+    - `bootstrap/placeholders` (squelettes de chargement)
+  - **Gain estimé:** -50 à -100KB sur main.css (à vérifier après recompilation)
+  - Les imports peuvent être réactivés en décommentant les lignes si nécessaire
+
+### Technical
+
+- **Nettoyage des logs de debug**
+  - Tous les `error_log()` maintenant conditionnés par `WP_DEBUG`
+  - Logs actifs uniquement en environnement de développement
+  - Fichiers concernés: `inc/cache-helpers.php`
+  - **Impact:** Pas de pollution des logs en production
+
+- **acf-overrides.css enrichi**
+  - Ajout des variables `--colorTheme1` à `--colorTheme6`
+  - Ajout des variables `--btn-border-radius`, `--content-wrapper-border-radius`, `--image-wrapper-border-radius`
+  - Ajout des classes `.bg-theme1` à `.bg-theme6`
+  - Ajout des classes border-radius (`.btn`, `.content-wrapper`, `.image-wrapper`)
+  - Tout généré automatiquement lors de la sauvegarde des Options Globales
+
+## [1.1.3] - 2026-03-14
+
+### Added
+
+- **Nouveau groupe de champs ACF "Icônes"** : Centralisation de la gestion des icônes
+  - Nouveau fichier `group_icones_options.json` à la racine du thème
+  - Apparaît comme un bloc séparé dans la page Options Globales
+  - Contient 4 champs pour gérer toutes les icônes du thème:
+    - `menu_toggle_icon` : Icône du bouton menu mobile (déplacé depuis Header)
+    - `offcanvas_menu_close_icon` : Icône fermeture offcanvas menu (déplacé depuis Header)
+    - `search_icon_html` : Icône bouton recherche (déplacé depuis Header)
+    - `scroll_to_top_icon` : **NOUVEAU** - Icône bouton "Retour en haut"
+  - Tous les champs utilisent Bootstrap Icons par défaut
+  - Valeur par défaut pour scroll-to-top : `<i class="bi bi-chevron-up"></i>`
+
+### Changed
+
+- **Groupe Header** : Intégration des logos dans un nouvel onglet
+  - Ajout d'un onglet "Logos" dans `group_header_options.json`
+  - Migration des 4 champs depuis l'ancien groupe Logos :
+    - `logo_desktop` : Logo affiché sur desktop/tablette
+    - `logo_desktop_height` : Hauteur du logo desktop (20-200px)
+    - `logo_mobile` : Logo affiché sur mobile
+    - `logo_mobile_height` : Hauteur du logo mobile (20-200px)
+  - Ancien groupe "Logos" désactivé (`active: false`)
+  - Les valeurs existantes sont conservées (même nom de champs)
+
+- **Footer.php** : Le bouton scroll-to-top utilise maintenant SCF au lieu du filtre hardcodé
+  - Remplacement de `apply_filters('bootscore/icon/chevron-up', ...)` par `wordscore_get_cached_option('scroll_to_top_icon')`
+  - Icône Bootstrap Icons par défaut au lieu de Font Awesome
+  - Fallback automatique si le champ est vide
+
+- **group_header_options.json** : Nettoyage de la structure
+  - Suppression de l'onglet "Icônes" (déplacé vers groupe séparé)
+  - Suppression des champs `menu_toggle_icon`, `offcanvas_menu_close_icon`, `search_icon_html`
+  - Les champs restent accessibles via le nouveau groupe "Icônes"
+
+### Technical
+
+- Fichiers dupliqués à la racine du thème pour modifications (comme demandé)
+- Les fichiers dans `acf-json/` restent intacts
+- Import manuel via SCF > Field Groups > Import requis pour activer les changements
+- menu_order du groupe Icônes : 6 (après les autres groupes)
+
 ## [1.1.2] - 2026-03-14
 
 ### Added

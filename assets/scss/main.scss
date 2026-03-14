@@ -41,14 +41,14 @@
 @import "bootstrap/progress";
 @import "bootstrap/list-group";
 @import "bootstrap/close";
-@import "bootstrap/toasts";
-@import "bootstrap/modal";
-@import "bootstrap/tooltip";
-@import "bootstrap/popover";
-@import "bootstrap/carousel";
-@import "bootstrap/spinners";
+// @import "bootstrap/toasts";      // Non utilisé - commenté pour optimisation
+// @import "bootstrap/modal";       // Non utilisé - commenté pour optimisation
+// @import "bootstrap/tooltip";     // Non utilisé - commenté pour optimisation
+// @import "bootstrap/popover";     // Non utilisé - commenté pour optimisation
+// @import "bootstrap/carousel";    // Non utilisé - commenté pour optimisation
+// @import "bootstrap/spinners";    // Non utilisé - commenté pour optimisation
 @import "bootstrap/offcanvas";
-@import "bootstrap/placeholders";
+// @import "bootstrap/placeholders"; // Non utilisé - commenté pour optimisation
 
 @import "bootstrap/helpers";
 

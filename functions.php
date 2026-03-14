@@ -271,29 +271,7 @@ function bootscore_child_compile_scss() {
     }
 }
 
-/**
- * Injecte les variables CSS pour les font-sizes des headings
- */
-add_action('wp_head', 'bootscore_child_inject_heading_sizes', 5);
-function bootscore_child_inject_heading_sizes() {
-    $h1_size = wordscore_get_cached_option('h1_font_size', 48);
-    $h2_size = wordscore_get_cached_option('h2_font_size', 36);
-    $h3_size = wordscore_get_cached_option('h3_font_size', 28);
-    $h4_size = wordscore_get_cached_option('h4_font_size', 24);
-    $h5_size = wordscore_get_cached_option('h5_font_size', 20);
-    $h6_size = wordscore_get_cached_option('h6_font_size', 16);
-
-    echo '<style id="heading-sizes">';
-    echo ':root {';
-    echo '--h1-font-size: ' . intval($h1_size) . 'px;';
-    echo '--h2-font-size: ' . intval($h2_size) . 'px;';
-    echo '--h3-font-size: ' . intval($h3_size) . 'px;';
-    echo '--h4-font-size: ' . intval($h4_size) . 'px;';
-    echo '--h5-font-size: ' . intval($h5_size) . 'px;';
-    echo '--h6-font-size: ' . intval($h6_size) . 'px;';
-    echo '}';
-    echo '</style>';
-}
+// SUPPRIMÉ: Heading sizes maintenant dans acf-overrides.css (généré automatiquement)
 
 /**
  * Charge les Google Fonts OU génère les @font-face pour les polices personnalisées
@@ -320,14 +298,23 @@ function bootscore_child_load_google_fonts() {
         $body_font = wordscore_get_cached_option('body_font_custom', 'Inter');
     }
 
+    // Récupérer les poids configurés dans ACF
+    $heading_weight = wordscore_get_cached_option('heading_font_weight', '600');
+    $body_weight = wordscore_get_cached_option('body_font_weight', '400');
+
     // Créer un tableau unique des polices à charger
     $fonts = array_unique([$heading_font, $body_font]);
+
+    // Créer un array unique des poids à charger (seulement ceux configurés)
+    $weights_to_load = array_unique([$heading_weight, $body_weight]);
+    sort($weights_to_load); // Google Fonts préfère l'ordre croissant
+    $weights_string = implode(';', $weights_to_load);
 
     // Construire l'URL Google Fonts
     $fonts_param = [];
     foreach ($fonts as $font) {
-        // Charger les poids 300, 400, 500, 600, 700, 800, 900
-        $fonts_param[] = str_replace(' ', '+', $font) . ':wght@300;400;500;600;700;800;900';
+        // Charger UNIQUEMENT les poids configurés dans ACF au lieu de tous (300-900)
+        $fonts_param[] = str_replace(' ', '+', $font) . ':wght@' . $weights_string;
     }
 
     if (!empty($fonts_param)) {
@@ -383,61 +370,7 @@ function bootscore_child_generate_custom_font_faces() {
     echo '</style>';
 }
 
-/**
- * Injecte les variables CSS personnalisées (custom uniquement, pas Bootstrap)
- *
- * Les variables Bootstrap ($primary, $secondary, $body-color, etc.) sont maintenant
- * gérées via _acf-overrides.scss et compilées directement dans le SCSS
- */
-add_action('wp_head', 'bootscore_child_inject_global_css', 6);
-function bootscore_child_inject_global_css() {
-    // Couleurs du thème (centralisées)
-    $colors = wordscore_get_theme_colors();
-
-    // Border-radius boutons
-    $btn_border_radius = wordscore_get_cached_option('btn_border_radius', '0');
-    $btn_border_radius_value = ($btn_border_radius === 'pill') ? '50rem' : intval($btn_border_radius) . 'px';
-
-    // Border-radius content-wrapper (0-40px)
-    $content_wrapper_border_radius = wordscore_get_cached_option('content_wrapper_border_radius', 8);
-    $content_wrapper_border_radius_value = intval($content_wrapper_border_radius) . 'px';
-
-    // Border-radius image-wrapper (0-40px)
-    $image_wrapper_border_radius = wordscore_get_cached_option('image_wrapper_border_radius', 8);
-    $image_wrapper_border_radius_value = intval($image_wrapper_border_radius) . 'px';
-
-    echo '<style id="global-settings">';
-    echo ':root {';
-
-    // Variables custom du thème (pour usage en CSS, pas Bootstrap)
-    echo '--colorTheme1: ' . esc_attr($colors['theme1']) . ';';
-    echo '--colorTheme2: ' . esc_attr($colors['theme2']) . ';';
-    echo '--colorTheme3: ' . esc_attr($colors['theme3']) . ';';
-    echo '--colorTheme4: ' . esc_attr($colors['theme4']) . ';';
-    echo '--colorTheme5: ' . esc_attr($colors['theme5']) . ';';
-    echo '--colorTheme6: ' . esc_attr($colors['theme6']) . ';';
-    echo '--colorText: ' . esc_attr($colors['ink']) . ';';
-
-    // Border-radius
-    echo '--btn-border-radius: ' . esc_attr($btn_border_radius_value) . ';';
-    echo '--content-wrapper-border-radius: ' . esc_attr($content_wrapper_border_radius_value) . ';';
-    echo '--image-wrapper-border-radius: ' . esc_attr($image_wrapper_border_radius_value) . ';';
-    echo '}';
-
-    // Classes background pour les 6 couleurs du thème
-    echo '.bg-theme1 { background-color: var(--colorTheme1) !important; }';
-    echo '.bg-theme2 { background-color: var(--colorTheme2) !important; }';
-    echo '.bg-theme3 { background-color: var(--colorTheme3) !important; }';
-    echo '.bg-theme4 { background-color: var(--colorTheme4) !important; }';
-    echo '.bg-theme5 { background-color: var(--colorTheme5) !important; }';
-    echo '.bg-theme6 { background-color: var(--colorTheme6) !important; }';
-
-    // Border-radius
-    echo '.btn { border-radius: var(--btn-border-radius) !important; }';
-    echo '.content-wrapper { border-radius: var(--content-wrapper-border-radius); }';
-    echo '.image-wrapper { border-radius: var(--image-wrapper-border-radius); }';
-    echo '</style>';
-}
+// SUPPRIMÉ: Variables CSS globales maintenant dans acf-overrides.css (généré automatiquement)
 
 /**
  * Affiche la palette de couleurs dans le wp-admin
@@ -507,5 +440,3 @@ function display_color_palette_admin() {
     </div>
     <?php
 }
-
-

@@ -129,6 +129,12 @@ function wordscore_generate_acf_overrides_css() {
     // Convertir ink en RGB
     $ink_rgb = wordscore_hex_to_rgb($colors['ink']);
 
+    // Border-radius
+    $btn_border_radius = wordscore_get_cached_option('btn_border_radius', '0');
+    $btn_border_radius_value = ($btn_border_radius === 'pill') ? '50rem' : intval($btn_border_radius) . 'px';
+    $content_wrapper_border_radius = intval(wordscore_get_cached_option('content_wrapper_border_radius', 8)) . 'px';
+    $image_wrapper_border_radius = intval(wordscore_get_cached_option('image_wrapper_border_radius', 8)) . 'px';
+
     $css_content = <<<CSS
 /* Fichier généré automatiquement depuis les Options Globales ACF */
 /* Ne pas modifier manuellement - sera écrasé lors de la prochaine sauvegarde */
@@ -149,6 +155,20 @@ function wordscore_generate_acf_overrides_css() {
     --h4-font-size: {$h4_size}px;
     --h5-font-size: {$h5_size}px;
     --h6-font-size: {$h6_size}px;
+
+    /* Variables custom du thème (pour usage en CSS, pas Bootstrap) */
+    --colorTheme1: {$colors['theme1']};
+    --colorTheme2: {$colors['theme2']};
+    --colorTheme3: {$colors['theme3']};
+    --colorTheme4: {$colors['theme4']};
+    --colorTheme5: {$colors['theme5']};
+    --colorTheme6: {$colors['theme6']};
+    --colorText: {$colors['ink']};
+
+    /* Border-radius */
+    --btn-border-radius: {$btn_border_radius_value};
+    --content-wrapper-border-radius: {$content_wrapper_border_radius};
+    --image-wrapper-border-radius: {$image_wrapper_border_radius};
 }
 
 /* Fix tailles de titres natifs (pour contenu WYSIWYG) */
@@ -223,6 +243,19 @@ h1, h2, h3, h4, h5, h6,
     box-shadow: 0 0 0 0.25rem rgba({$theme1_rgb}, 0.5);
 }
 
+/* Classes background pour les 6 couleurs du thème */
+.bg-theme1 { background-color: var(--colorTheme1) !important; }
+.bg-theme2 { background-color: var(--colorTheme2) !important; }
+.bg-theme3 { background-color: var(--colorTheme3) !important; }
+.bg-theme4 { background-color: var(--colorTheme4) !important; }
+.bg-theme5 { background-color: var(--colorTheme5) !important; }
+.bg-theme6 { background-color: var(--colorTheme6) !important; }
+
+/* Border-radius */
+.btn { border-radius: var(--btn-border-radius) !important; }
+.content-wrapper { border-radius: var(--content-wrapper-border-radius); }
+.image-wrapper { border-radius: var(--image-wrapper-border-radius); }
+
 CSS;
 
     $file_path = get_stylesheet_directory() . '/assets/css/acf-overrides.css';
@@ -242,7 +275,7 @@ function wordscore_force_scss_recompile_on_options_save($post_id) {
     }
 
     // Debug: log all posted ACF fields
-    if (isset($_POST['acf'])) {
+    if (defined('WP_DEBUG') && WP_DEBUG && isset($_POST['acf'])) {
         $acf_fields = array_keys($_POST['acf']);
         error_log('ACF SAVE POST - Posted fields: ' . implode(', ', $acf_fields));
     }
@@ -263,11 +296,15 @@ function wordscore_force_scss_recompile_on_options_save($post_id) {
     }
 
     if (!$is_global_page) {
-        error_log('ACF SAVE POST - NOT GLOBAL, skipping');
+        if (defined('WP_DEBUG') && WP_DEBUG) {
+            error_log('ACF SAVE POST - NOT GLOBAL, skipping');
+        }
         return;
     }
 
-    error_log('ACF SAVE POST - GLOBAL OPTIONS DETECTED - TRIGGERING REGENERATION');
+    if (defined('WP_DEBUG') && WP_DEBUG) {
+        error_log('ACF SAVE POST - GLOBAL OPTIONS DETECTED - TRIGGERING REGENERATION');
+    }
     // Marquer qu'il faut régénérer le CSS (on le fera sur shutdown pour éviter les problèmes de cache)
     add_action('shutdown', 'wordscore_regenerate_acf_overrides');
 }
@@ -277,11 +314,16 @@ function wordscore_force_scss_recompile_on_options_save($post_id) {
  * Appelé sur shutdown pour s'assurer que tous les caches sont vidés
  */
 function wordscore_regenerate_acf_overrides() {
-    error_log('REGENERATING ACF OVERRIDES CSS');
+    if (defined('WP_DEBUG') && WP_DEBUG) {
+        error_log('REGENERATING ACF OVERRIDES CSS');
+    }
 
     // Régénérer le fichier CSS avec les nouvelles valeurs
     wordscore_generate_acf_overrides_css();
-    error_log('ACF OVERRIDES CSS REGENERATED');
+
+    if (defined('WP_DEBUG') && WP_DEBUG) {
+        error_log('ACF OVERRIDES CSS REGENERATED');
+    }
 }
 
 add_action('acf/save_post', 'wordscore_force_scss_recompile_on_options_save', 25);
