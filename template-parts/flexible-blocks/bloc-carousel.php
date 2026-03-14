@@ -36,6 +36,9 @@ if (empty($slides)) {
     return; // Pas de slides, on n'affiche rien
 }
 
+// Boutons (globaux au carousel)
+$buttons = $bloc['buttons'] ?? [];
+
 // Mapping largeurs
 $col_class_map = [
     '25' => 'col-12 col-lg-3',
@@ -117,7 +120,6 @@ $wrapper_class = ($carousel_width === 'container') ? 'container' : 'container-fl
                     $bg_image = flexible_get_image_url($slide['bg_image'] ?? null);
                     $overlay = intval($slide['overlay'] ?? 50);
                     $text_color = $slide['text_color'] ?? 'light';
-                    $buttons = $slide['buttons'] ?? [];
 
                     $text_color_class = 'text-' . esc_attr($text_color);
                     $active_class = ($index === 0) ? ' active' : '';

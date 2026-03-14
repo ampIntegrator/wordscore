@@ -6066,54 +6066,54 @@
                                         "class": "",
                                         "id": ""
                                     }
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_carousel_buttons",
+                            "label": "Boutons",
+                            "name": "buttons",
+                            "type": "repeater",
+                            "layout": "table",
+                            "button_label": "Ajouter un bouton",
+                            "sub_fields": [
+                                {
+                                    "key": "field_carousel_button_link",
+                                    "label": "Lien",
+                                    "name": "link",
+                                    "type": "link",
+                                    "return_format": "array"
                                 },
                                 {
-                                    "key": "field_slide_buttons",
-                                    "label": "Boutons",
-                                    "name": "buttons",
-                                    "type": "repeater",
-                                    "layout": "table",
-                                    "button_label": "Ajouter un bouton",
-                                    "sub_fields": [
-                                        {
-                                            "key": "field_slide_button_link",
-                                            "label": "Lien",
-                                            "name": "link",
-                                            "type": "link",
-                                            "return_format": "array"
-                                        },
-                                        {
-                                            "key": "field_slide_button_type",
-                                            "label": "Type",
-                                            "name": "btn_type",
-                                            "type": "select",
-                                            "choices": {
-                                                "primary": "Primary",
-                                                "secondary": "Secondary"
-                                            },
-                                            "default_value": "primary"
-                                        },
-                                        {
-                                            "key": "field_slide_button_outline",
-                                            "label": "Outline",
-                                            "name": "btn_outline",
-                                            "type": "true_false",
-                                            "default_value": 0,
-                                            "ui": 1
-                                        },
-                                        {
-                                            "key": "field_slide_button_text_color",
-                                            "label": "Couleur du texte",
-                                            "name": "btn_text_color",
-                                            "type": "select",
-                                            "choices": {
-                                                "": "Défaut",
-                                                "light": "Light",
-                                                "dark": "Dark"
-                                            },
-                                            "default_value": ""
-                                        }
-                                    ]
+                                    "key": "field_carousel_button_type",
+                                    "label": "Type",
+                                    "name": "btn_type",
+                                    "type": "select",
+                                    "choices": {
+                                        "primary": "Primary",
+                                        "secondary": "Secondary"
+                                    },
+                                    "default_value": "primary"
+                                },
+                                {
+                                    "key": "field_carousel_button_outline",
+                                    "label": "Outline",
+                                    "name": "btn_outline",
+                                    "type": "true_false",
+                                    "default_value": 0,
+                                    "ui": 1
+                                },
+                                {
+                                    "key": "field_carousel_button_text_color",
+                                    "label": "Couleur du texte",
+                                    "name": "btn_text_color",
+                                    "type": "select",
+                                    "choices": {
+                                        "": "Défaut",
+                                        "light": "Light",
+                                        "dark": "Dark"
+                                    },
+                                    "default_value": ""
                                 }
                             ]
                         }
