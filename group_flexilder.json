@@ -5905,8 +5905,8 @@
                                 "id": ""
                             },
                             "return_format": "string",
-                            "enable_opacity": true,
-                            "return_opacity": true
+                            "enable_opacity": 1,
+                            "return_opacity": 1
                         },
                         {
                             "key": "field_carousel_content_padding",

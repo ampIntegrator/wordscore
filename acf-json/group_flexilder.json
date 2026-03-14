@@ -6032,7 +6032,7 @@
                             "default_value": 30,
                             "min": 0,
                             "max": 60,
-                            "step": 5,
+                            "step": 2,
                             "append": "px",
                             "prepend": ""
                         },
@@ -6417,5 +6417,5 @@
     "description": "Flexible content builder pour construire vos pages",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1773481398
+    "modified": 1773481760
 }
