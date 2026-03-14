@@ -5990,9 +5990,9 @@
                             "label": "Couleur personnalisée",
                             "name": "content_bg_custom",
                             "aria-label": "",
-                            "type": "color_picker",
-                            "instructions": "",
-                            "required": 0,
+                            "type": "text",
+                            "instructions": "Couleur personnalisée (hex, rgb, rgba)",
+                            "required": false,
                             "conditional_logic": [
                                 [
                                     {
@@ -6007,14 +6007,11 @@
                                 "class": "",
                                 "id": ""
                             },
+                            "placeholder": "Ex: rgba(255, 255, 255, 0.9)",
                             "default_value": "",
-                            "enable_opacity": 1,
-                            "return_format": "string",
-                            "allow_in_bindings": 1,
-                            "show_custom_palette": 0,
-                            "show_color_wheel": 1,
-                            "custom_palette_source": "",
-                            "palette_colors": ""
+                            "maxlength": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
                             "key": "field_carousel_content_padding",
@@ -6224,16 +6221,16 @@
                                     "parent_repeater": "field_carousel_slides"
                                 },
                                 {
-                                    "key": "field_slide_button_link",
-                                    "label": "Bouton : Lien",
-                                    "name": "button_link",
+                                    "key": "field_slide_btn_link",
+                                    "label": "Bouton (optionnel)",
+                                    "name": "btn_link",
                                     "aria-label": "",
                                     "type": "link",
-                                    "instructions": "Lien du bouton (optionnel)",
+                                    "instructions": "",
                                     "required": false,
                                     "conditional_logic": false,
                                     "wrapper": {
-                                        "width": "50",
+                                        "width": "25",
                                         "class": "",
                                         "id": ""
                                     },
@@ -6241,9 +6238,9 @@
                                     "parent_repeater": "field_carousel_slides"
                                 },
                                 {
-                                    "key": "field_slide_button_type",
-                                    "label": "Bouton : Type",
-                                    "name": "button_type",
+                                    "key": "field_slide_btn_type",
+                                    "label": "Type de bouton",
+                                    "name": "btn_type",
                                     "aria-label": "",
                                     "type": "select",
                                     "instructions": "",
@@ -6256,7 +6253,13 @@
                                     },
                                     "choices": {
                                         "primary": "Primary",
-                                        "secondary": "Secondary"
+                                        "secondary": "Secondary",
+                                        "success": "Success",
+                                        "danger": "Danger",
+                                        "warning": "Warning",
+                                        "info": "Info",
+                                        "light": "Light",
+                                        "dark": "Dark"
                                     },
                                     "default_value": "primary",
                                     "multiple": 0,
@@ -6270,9 +6273,9 @@
                                     "parent_repeater": "field_carousel_slides"
                                 },
                                 {
-                                    "key": "field_slide_button_outline",
-                                    "label": "Bouton : Outline",
-                                    "name": "button_outline",
+                                    "key": "field_slide_btn_outline",
+                                    "label": "Bouton outline",
+                                    "name": "btn_outline",
                                     "aria-label": "",
                                     "type": "true_false",
                                     "instructions": "",
@@ -6288,6 +6291,36 @@
                                     "message": "",
                                     "ui_on_text": "",
                                     "ui_off_text": "",
+                                    "parent_repeater": "field_carousel_slides"
+                                },
+                                {
+                                    "key": "field_slide_btn_text_color",
+                                    "label": "Couleur texte bouton",
+                                    "name": "btn_text_color",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "": "Auto (par défaut)",
+                                        "light": "Light (blanc)",
+                                        "dark": "Dark (noir)"
+                                    },
+                                    "default_value": false,
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "return_format": "value",
+                                    "create_options": 0,
+                                    "save_options": 0,
                                     "parent_repeater": "field_carousel_slides"
                                 },
                                 {
@@ -6382,5 +6415,5 @@
     "description": "Flexible content builder pour construire vos pages",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1773480921
+    "modified": 1773481192
 }

@@ -5889,7 +5889,7 @@
                             "key": "field_carousel_content_bg_custom",
                             "label": "Couleur personnalisée",
                             "name": "content_bg_custom",
-                            "type": "text",
+                            "type": "color_picker",
                             "conditional_logic": [
                                 [
                                     {
@@ -5904,8 +5904,9 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "instructions": "Couleur personnalisée (hex, rgb, rgba)",
-                            "placeholder": "Ex: rgba(255, 255, 255, 0.9)"
+                            "return_format": "string",
+                            "enable_opacity": true,
+                            "return_opacity": true
                         },
                         {
                             "key": "field_carousel_content_padding",
